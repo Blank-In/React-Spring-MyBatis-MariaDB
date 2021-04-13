@@ -1,0 +1,56 @@
+*{
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+#title{
+    background: dimgray;
+    color: white;
+    width: 50%;
+    margin-top: 10px;
+    text-align: center;
+}
+#time{
+    background: gray;
+    color: white;
+    text-align: center;
+    width: 50%;
+}
+button{
+    width: 100px;
+}
+#comp{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    width: 45%;
+    border-radius: 5px;
+    background: white;
+}
+#root{
+    border: 5px solid black;
+    background: linear-gradient(mistyrose,azure);
+}
+ul{
+    width: 45%;
+    height: 50px;
+}
+li{
+    float: left;
+    margin-left: 40px;
+}
+#input>hr{
+    margin-top: 5px;
+}
+#temp>h4{
+    float: left;
+}
+#temp>input{
+    margin: 0 10px;
+    float: left;
+}
+#temp>hr{
+    margin-bottom: 5px;
+}
