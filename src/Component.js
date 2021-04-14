@@ -16,8 +16,8 @@ class Component extends React.Component{
             <div id="comp">
                 <h2>{name}</h2>
                 <hr/>
-                <h3>{content}</h3>
-                <button onClick={this.handleClick}>카운트 {this.state.cnt}</button>
+                <h4>{content}</h4>
+                <button id='marginTop' onClick={this.handleClick}>카운트 {this.state.cnt}</button>
             </div>
         )
     }

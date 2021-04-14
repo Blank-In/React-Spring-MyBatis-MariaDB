@@ -5,8 +5,8 @@ class Temp extends React.Component{
         super(props);
         this.state={
             c: 0,
-            f: 0,
-            k: 0
+            f: 32,
+            k: 273.15
         }
     }
     cChange = (event) => {
@@ -40,17 +40,16 @@ class Temp extends React.Component{
                     <h4>섭씨 </h4>
                     <input value={c} type='number' name={'c'} onChange={this.cChange}/>
                     <h3>°C</h3>
-                    <hr/>
+                    <hr id='marginBottom'/>
                     <h4>화씨 </h4>
                     <input value={f} type='number' name={'f'} onChange={this.fChange}/>
                     <h3>°F</h3>
-                    <hr/>
+                    <hr id='marginBottom'/>
                     <h4>켈빈 </h4>
                     <input value={k} type='number' name={'k'} onChange={this.kChange}/>
                     <h3>K</h3>
                 </form>
             </div>
-
         )
     }
 }

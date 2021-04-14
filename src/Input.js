@@ -20,13 +20,13 @@ class Input extends React.Component{
         const {age}=this.state;
         return(
             <div id='comp'>
-                <form onSubmit={this.handleChange} id='input'>
+                <form onSubmit={this.handleChange}>
                     <input type='text' name={'name'} value={name} onChange={this.handleChange}/>
                     <br/>
                     <input type='number' name={'age'} value={age} onChange={this.handleChange}/>
                     <br/>
                     <input type='submit' value='Submit'/>
-                    <hr/>
+                    <hr id='marginTop'/>
                 </form>
                 <h2>{this.state.name}</h2>
                 <h3>{this.state.age}</h3>

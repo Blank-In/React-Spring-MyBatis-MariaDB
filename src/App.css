@@ -8,41 +8,47 @@
     background: dimgray;
     color: white;
     width: 50%;
-    margin-top: 10px;
     text-align: center;
+    box-shadow: 0 3px 6px gray;
+    border-radius: 3px 3px 0 0;
 }
 #time{
     background: gray;
     color: white;
     text-align: center;
     width: 50%;
+    box-shadow: 0 3px 6px gray;
+    border-radius: 0 0 3px 3px;
 }
 button{
+    border: 0;
+    background: lightgray;
     width: 100px;
+    box-shadow: 0 1px 3px darkgray;
 }
 #comp{
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid black;
     width: 45%;
-    border-radius: 5px;
     background: white;
+    box-shadow: 0 3px 6px darkgray;
+    border-radius: 3px;
 }
 #root{
-    border: 5px solid black;
+    padding: 10px;
     background: linear-gradient(mistyrose,azure);
 }
 ul{
     width: 45%;
     height: 50px;
+    background: white;
+    box-shadow: 0 3px 6px darkgray;
+    border-radius: 3px;
 }
 li{
     float: left;
     margin-left: 40px;
-}
-#input>hr{
-    margin-top: 5px;
 }
 #temp>h4{
     float: left;
@@ -51,6 +57,45 @@ li{
     margin: 0 10px;
     float: left;
 }
-#temp>hr{
+#marginTop{
+    margin-top: 5px;
+}
+#marginBottom{
     margin-bottom: 5px;
+}
+#comp>input{
+    width: 100%;
+}
+#comp>input:first-child{
+    font-size: 25px;
+}
+#toolMargin{
+    margin-top: 40px;
+}
+#colorList{
+    height: 110px;
+    width: 100%;
+}
+#colorBox{
+    width: 40px;
+    height: 100px;
+    float: left;
+    margin-right: 10px;
+}
+#color{
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 0 3px dimgray;
+    margin-bottom: 5px;
+}
+#colorBox>input{
+    -webkit-appearance: slider-vertical;
+    width: 33%;
+    height: 60px;
+    float: left;
+}
+#colorList>Button{
+    margin-left: -5px;
+    width: 20px;
+    height: 100px;
 }
