@@ -1,8 +1,7 @@
 import React from "react";
-import './App.css'
-import Component from './Component';
+import Post from './Post';
 
-class App extends Component {
+class PostBoard extends Post {
     state={
         posts:[
             {name:'이것은 제목입니다.', content:'이것은 제목이 아닙니다 주의사항을 잘 숙지하시길 바랍니다.'}
@@ -32,18 +31,15 @@ class App extends Component {
     }
     render(){
         const postList=this.state.posts.map(
-            ({name,content,})=>(
-                <Component
-                    name={name}
-                    content={content}
+            (post)=>(
+                <Post
+                    name={post.name}
+                    content={post.content}
                 />
             )
         );
         return (
             <div>
-                <h1 id="title">테스트 페이지</h1>
-                <h2 id="time">{new Date().toLocaleTimeString()}</h2>
-                <div id='toolMargin'/>
                 {postList}
                 <div id='comp'>
                     <input value={this.state.name} name={'name'} onChange={this.handleChange}/>
@@ -56,4 +52,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default PostBoard;

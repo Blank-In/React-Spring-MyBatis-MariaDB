@@ -35,21 +35,19 @@ class Temp extends React.Component{
         const f=this.state.f;
         const k=this.state.k;
         return (
-            <div id='comp'>
-                <form id='temp'>
-                    <h4>섭씨 </h4>
-                    <input value={c} type='number' name={'c'} onChange={this.cChange}/>
-                    <h3>°C</h3>
-                    <hr id='marginBottom'/>
-                    <h4>화씨 </h4>
-                    <input value={f} type='number' name={'f'} onChange={this.fChange}/>
-                    <h3>°F</h3>
-                    <hr id='marginBottom'/>
-                    <h4>켈빈 </h4>
-                    <input value={k} type='number' name={'k'} onChange={this.kChange}/>
-                    <h3>K</h3>
-                </form>
-            </div>
+            <form id='temp'>
+                <h4>섭씨 </h4>
+                <input value={c} type='number' name={'c'} onChange={this.cChange}/>
+                <h3>°C</h3>
+                <hr id='marginBottom'/>
+                <h4>화씨 </h4>
+                <input value={f} type='number' name={'f'} onChange={this.fChange}/>
+                <h3>°F</h3>
+                <hr id='marginBottom'/>
+                <h4>켈빈 </h4>
+                <input value={k} type='number' name={'k'} onChange={this.kChange}/>
+                <h3>K</h3>
+            </form>
         )
     }
 }

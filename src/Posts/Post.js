@@ -1,6 +1,6 @@
 import React from "react";
 
-class Component extends React.Component{
+class Post extends React.Component{
     constructor(props) {
         super(props);
         this.state={cnt:0};
@@ -13,7 +13,7 @@ class Component extends React.Component{
     render(){
         const {name,content}=this.props;
         return(
-            <div id="comp">
+            <div id="post">
                 <h2>{name}</h2>
                 <hr/>
                 <h4>{content}</h4>
@@ -23,4 +23,4 @@ class Component extends React.Component{
     }
 }
 
-export default Component;
+export default Post;

@@ -4,10 +4,14 @@ class Color extends React.Component{
     constructor(props) {
         super(props);
         this.state=({
-            r:this.props.r,
+            r:props.r,
             g:props.g,
-            b:props.b
+            b:props.b,
         })
+    }
+    handleRemove=()=>{
+        const {color,onRemove}=this.props;
+        onRemove(color.id);
     }
     render(){
         const {r,g,b}=this.state;
@@ -16,6 +20,7 @@ class Color extends React.Component{
                 <div id='color' style={{
                     background:"rgb("+r+","+g+","+b+")"
                 }}/>
+                <button id='del' onClick={this.handleRemove}>제거</button>
             </div>
         )
     }
