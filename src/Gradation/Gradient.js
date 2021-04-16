@@ -36,12 +36,13 @@ class Gradient extends React.Component{
                 r:this.state.r,
                 g:this.state.g,
                 b:this.state.b,
-                id:this.id++
+                id:this.id+1
             }),
             r:Math.random()*256,
             g:Math.random()*256,
             b:Math.random()*256
         });
+        ++this.id;
     }
     handleRemove=(id)=>{
         const {colors}=this.state;

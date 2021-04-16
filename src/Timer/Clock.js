@@ -1,5 +1,8 @@
 import React from "react";
 import Alarm from "./Alarm";
+import {connect} from 'react-redux';
+import {increment,decrement} from "../actions";
+
 class Clock extends React.Component{
     id=2;
     constructor(props) {
@@ -53,7 +56,7 @@ class Clock extends React.Component{
         for(let index=0;index<alarms.length;++index){
             const alarm=alarms[index];
             if(alarm.hour===new Date().getHours()&&alarm.minute.valueOf()===new Date().getMinutes()){
-                alert(alarm.hour+"시 "+alarm.minute+"분 입니다.");
+                //this.props.onIncrement();
                 this.handleRemove(alarm.id);
             }
         }
