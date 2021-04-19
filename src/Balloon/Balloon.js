@@ -12,26 +12,25 @@ class Balloon extends React.Component{
                 opacity: 0
             }
         };
+        setTimeout(this.tick,1000);
+    }
+    tick=()=>{
+        const {r, g, b, id} = this.props;
+        this.setState({
+            style:{
+                background: "rgb(" + r + "," + g + "," + b + ")",
+                transition: "left "+(id*0.1+1)+"s ease, opacity 1s ease",
+                left: id * 105 + "px",
+                opacity: 1
+            }
+        });
+        ++this.flg
     }
     render() {
         const {lore} = this.props;
-        if(this.flg<2){
-            ++this.flg;
-        }
-        if (this.flg===2) {
-            const {r, g, b, id} = this.props;
-            this.state={
-                style: {
-                    background: "rgb(" + r + "," + g + "," + b + ")",
-                    transition: "left "+(id*0.1+1)+"s ease, opacity 1s ease",
-                    left: id * 105 + "px",
-                    opacity: 1
-                }
-            };
-            ++this.flg
-        }
+        const {style}=this.state;
         return (
-            <div id='balloon' style={this.state.style}>
+            <div id='balloon' style={style}>
                 <h3>{lore}</h3>
             </div>
         )

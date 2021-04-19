@@ -25,6 +25,7 @@ class BalloonBox extends React.Component{
                     r={balloon.r}
                     g={balloon.g}
                     b={balloon.b}
+                    key={balloon.id}
                     id={balloon.id}
                 />
             )

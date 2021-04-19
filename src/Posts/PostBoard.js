@@ -2,13 +2,22 @@ import React from "react";
 import Post from './Post';
 
 class PostBoard extends Post {
-    state={
-        posts:[
-            {name:'이것은 제목입니다.', content:'이것은 제목이 아닙니다 주의사항을 잘 숙지하시길 바랍니다.'}
-        ],
-        name:'',
-        content:'',
+    id=1;
+    constructor() {
+        super();
+        this.state={
+            posts:[
+                {
+                    name:'이것은 제목입니다.',
+                    content:'이것은 제목이 아닙니다 주의사항을 잘 숙지하시길 바랍니다.',
+                    id:0
+                }
+            ],
+            name:'',
+            content:'',
+        }
     }
+
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value,
@@ -24,6 +33,7 @@ class PostBoard extends Post {
             posts: this.state.posts.concat({
                 name:this.state.name,
                 content:this.state.content,
+                id:this.id++
             }),
             name:'',
             content:'',
@@ -35,6 +45,7 @@ class PostBoard extends Post {
                 <Post
                     name={post.name}
                     content={post.content}
+                    key={post.id}
                 />
             )
         );

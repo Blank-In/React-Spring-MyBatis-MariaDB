@@ -1,7 +1,7 @@
 import React from "react";
 import Alarm from "./Alarm";
 import {connect} from 'react-redux';
-import {increment,decrement} from "../actions";
+import {setValue} from "../actions";
 
 class Clock extends React.Component{
     id=2;
@@ -14,7 +14,23 @@ class Clock extends React.Component{
             ],
             hour: 0,
             minute: 0,
-            lore: ''
+            lore: '',
+            time: new Date().toLocaleTimeString()
+        }
+        setInterval(this.tick,1000);
+    }
+    tick=()=>{
+        const {alarms}=this.state;
+        this.setState({
+            time:new Date().toLocaleTimeString()
+        })
+        for(let index=0;index<alarms.length;++index){
+            const alarm=alarms[index];
+            if(alarm.hour===new Date().getHours()&&alarm.minute.valueOf()===new Date().getMinutes()){
+                this.props.onSetValue(5);
+                this.handleRemove(alarm.id);
+                return;
+            }
         }
     }
     hChange=(event)=>{
@@ -52,14 +68,7 @@ class Clock extends React.Component{
         });
     }
     render() {
-        const {alarms}=this.state;
-        for(let index=0;index<alarms.length;++index){
-            const alarm=alarms[index];
-            if(alarm.hour===new Date().getHours()&&alarm.minute.valueOf()===new Date().getMinutes()){
-                //this.props.onIncrement();
-                this.handleRemove(alarm.id);
-            }
-        }
+        const {alarms,time}=this.state;
         const alarmList=alarms.map(
             alarm=>(
                 <Alarm
@@ -67,14 +76,14 @@ class Clock extends React.Component{
                     minute={alarm.minute}
                     alarm={alarm}
                     lore={alarm.lore}
+                    key={alarm.id}
                     onRemove={this.handleRemove}
                 />
             )
         );
-
         return (
             <div id='comp'>
-                <h2 id="time">{new Date().toLocaleTimeString()}</h2>
+                <h2 id="time">{time}</h2>
                 {alarmList}
                 <div id='alarm'>
                     <input id='newTime' value={this.state.hour} type='number' onChange={this.hChange}/>
@@ -88,4 +97,18 @@ class Clock extends React.Component{
         )
     }
 }
+
+let mapDispatchToProps=(dispatch)=>{
+    return {
+        onSetValue: (value)=>dispatch(setValue(value))
+    }
+}
+
+let mapStateToProps=(state)=>{
+    return{
+        value:state.counter.value
+    };
+}
+
+Clock=connect(mapStateToProps,mapDispatchToProps)(Clock);
 export default Clock;

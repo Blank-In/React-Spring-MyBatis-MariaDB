@@ -59,6 +59,7 @@ class Gradient extends React.Component{
                     g={color.g}
                     b={color.b}
                     color={color}
+                    key={color.id}
                     onRemove={this.handleRemove}
                 />
             )

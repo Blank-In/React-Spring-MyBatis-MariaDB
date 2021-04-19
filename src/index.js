@@ -11,10 +11,15 @@ import PopUp from "./PopUp"
 import Clock from "./Timer/Clock";
 import './App.css'
 import reportWebVitals from './reportWebVitals';
+import {createStore} from "redux";
+import counterApp from "./reducers";
+import {Provider} from "react-redux";
+
+const store = createStore(counterApp);
 
 function tick(){
     ReactDOM.render(
-         <React.StrictMode>
+         <Provider store={store}>
             <Header />
             <PostBoard />
             <List />
@@ -24,9 +29,9 @@ function tick(){
              <BalloonBox />
              <PopUp />
              <Clock />
-        </React.StrictMode>,
+        </Provider>,
         document.getElementById('root')
     );
 }
-setInterval(tick,1000);
+tick();
 reportWebVitals();
