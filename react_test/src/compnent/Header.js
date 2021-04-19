@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {setValue} from "./actions";
+import {setValue} from "../redux/actions";
 
 class Header extends React.Component{
     constructor(props) {

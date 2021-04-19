@@ -1,7 +1,7 @@
 import React from "react";
 import Alarm from "./Alarm";
 import {connect} from 'react-redux';
-import {setValue} from "../actions";
+import {setValue} from "../../redux/actions";
 
 class Clock extends React.Component{
     id=2;
