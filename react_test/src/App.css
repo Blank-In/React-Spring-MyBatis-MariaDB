@@ -1,0 +1,173 @@
+*{
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+#title{
+    color: white;
+    width: 50%;
+    text-align: center;
+    box-shadow: 0 3px 6px gray;
+    border-radius: 3px 3px 0 0;
+    margin-bottom: 40px;
+}
+#time{
+    background: gray;
+    color: white;
+    text-align: center;
+    width: 50%;
+    box-shadow: 0 3px 6px gray;
+    border-radius: 0 0 3px 3px;
+    margin-bottom: 10px;
+}
+button{
+    border: 0;
+    background: lightgray;
+    width: 100px;
+    box-shadow: 0 1px 3px darkgray;
+}
+button:active{
+    background:darkgray;
+}
+#comp, #post, #temp, #balloonBox{
+    margin-bottom: 40px;
+    padding: 10px;
+    width: 55%;
+    background: white;
+    box-shadow: 0 3px 6px darkgray;
+    border-radius: 3px;
+}
+#post{
+    margin-bottom: 5px;
+}
+#root{
+    padding: 10px;
+    background: linear-gradient(mistyrose,azure);
+}
+ul{
+    width: 45%;
+    height: 50px;
+    background: white;
+    box-shadow: 0 3px 6px darkgray;
+    border-radius: 3px;
+    margin-bottom: 40px;
+}
+li{
+    float: left;
+    margin-left: 40px;
+}
+#temp>h4{
+    float: left;
+}
+#temp>input{
+    margin: 0 10px;
+    float: left;
+}
+#marginTop{
+    margin-top: 5px;
+}
+#marginBottom{
+    margin-bottom: 5px;
+}
+#comp>input{
+    width: 100%;
+}
+#comp>input:first-child{
+    font-size: 25px;
+}
+#colorBox{
+    width: 40px;
+    height: 100px;
+    float: left;
+    margin: 0 5px;
+}
+#color{
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 0 3px dimgray;
+    margin-bottom: 5px;
+}
+#colorBox>input{
+    -webkit-appearance: slider-vertical;
+    width: 33%;
+    height: 60px;
+    float: left;
+}
+#add{
+    width: 20px;
+    height: 100px;
+    margin-bottom: 10px;
+    margin-right: 30px;
+}
+#del{
+    width: 100%;
+    height: 40px;
+}
+#balloonBox{
+    height: 130px;
+    width: 60%;
+    position: relative;
+    overflow: hidden;
+}
+#balloon{
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    float: left;
+    box-shadow: 0 0 3px dimgray;
+    text-align: center;
+    border-radius: 10%;
+    position: absolute;
+}
+#balloon>h3{
+    margin-top: 25%;
+}
+#pop{
+    position: fixed;
+    right: 20px;
+    width: 200px;
+    height: 400px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 3px dimgray;
+}
+.popUp{
+    transition: bottom .3s ease;
+    bottom: -100px;
+}
+.popDown{
+    transition: bottom .3s ease;
+    bottom: -370px;
+}
+#alarm{
+    width: 90%;
+    height: 50px;
+    box-shadow: 0 3px 6px darkgray;
+    margin-bottom: 5px;
+    position: relative;
+}
+#alarmTime{
+    float: left;
+    margin: 0 20px;
+    line-height: 50px;
+}
+#alarm>button{
+    height: 30px;
+    margin-top: 10px;
+    position: absolute;
+    right: 10px;
+}
+#newTime{
+    width: 50px;
+    margin-left: 25px;
+    margin-top: 5px;
+    font-size: 32px;
+}
+#alarm>h1,#alarm>input,#alarm>p{
+    float: left;
+}
+#loreAdd,#alarm>p{
+    margin-top: 15px;
+    width: 100px;
+}
