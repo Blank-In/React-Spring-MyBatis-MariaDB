@@ -9,12 +9,14 @@ import Gradient from './compnent/gradation/Gradient';
 import BalloonBox from "./compnent/balloon/BalloonBox";
 import PopUp from "./compnent/PopUp"
 import Clock from "./compnent/timer/Clock";
+import Login from "./compnent/DataBase/Login";
 import './App.css'
 import reportWebVitals from './reportWebVitals';
 import {createStore} from "redux";
 import counterApp from "./redux/reducers";
 import {Provider} from "react-redux";
 import Spring from "./spring/Spring";
+import Register from "./compnent/DataBase/Register";
 
 const store = createStore(counterApp);
 
@@ -27,11 +29,12 @@ function tick(){
             <Input />
             <Temp />
             <Gradient/>
-             <BalloonBox />
-             <PopUp />
-             <Clock />
-             <Spring />
-             {/*<DBConnection /> DB연동 시도(삭제해도 됨)*/}
+            <BalloonBox />
+            <PopUp />
+            <Clock />
+            <Spring />
+            <Login />
+            <Register />
         </Provider>,
         document.getElementById('root')
     );

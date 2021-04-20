@@ -26,11 +26,12 @@ button{
     background: lightgray;
     width: 100px;
     box-shadow: 0 1px 3px darkgray;
+    margin-right: 5px;
 }
 button:active{
     background:darkgray;
 }
-#comp, #post, #temp, #balloonBox{
+#comp, #post, #temp, #balloonBox, #postAdd{
     margin-bottom: 40px;
     padding: 10px;
     width: 55%;
@@ -70,10 +71,10 @@ li{
 #marginBottom{
     margin-bottom: 5px;
 }
-#comp>input{
+#postAdd>input{
     width: 100%;
 }
-#comp>input:first-child{
+#postAdd>input:first-child{
     font-size: 25px;
 }
 #colorBox{

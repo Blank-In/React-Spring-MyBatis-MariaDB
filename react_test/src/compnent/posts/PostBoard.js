@@ -52,10 +52,10 @@ class PostBoard extends Post {
         return (
             <div>
                 {postList}
-                <div id='comp'>
-                    <input value={this.state.name} name={'name'} onChange={this.handleChange}/>
+                <div id='postAdd'>
+                    <input value={this.state.name} name={'name'} onChange={this.handleChange} placeholder='제목'/>
                     <hr id='marginTop'/>
-                    <input value={this.state.content} name={'content'} onChange={this.handleChange}/>
+                    <input value={this.state.content} name={'content'} onChange={this.handleChange} placeholder='내용'/>
                     <button id='marginTop' onClick={this.btnDown}>게시글 추가</button>
                 </div>
             </div>
