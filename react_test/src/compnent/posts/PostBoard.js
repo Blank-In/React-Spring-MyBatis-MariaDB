@@ -24,8 +24,8 @@ class PostBoard extends Post {
             [event.target.content]: event.target.value
         });
     }
-    btnDown = (event) => {
-        if(this.state.name===''||this.state.name===''){
+    btnDown = () => {
+        if(this.state.name===''||this.state.content===''){
             alert("제목이나 내용을 비우지 마세요.");
             return;
         }
@@ -54,7 +54,7 @@ class PostBoard extends Post {
                 {postList}
                 <div id='postAdd'>
                     <input value={this.state.name} name={'name'} onChange={this.handleChange} placeholder='제목'/>
-                    <hr id='marginTop'/>
+                    <hr/>
                     <input value={this.state.content} name={'content'} onChange={this.handleChange} placeholder='내용'/>
                     <button id='marginTop' onClick={this.btnDown}>게시글 추가</button>
                 </div>

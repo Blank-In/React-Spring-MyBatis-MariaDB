@@ -12,19 +12,11 @@ class Register extends React.Component{
             flg:false
         }
     }
-    iChange = (event) => {
+    handleChange = (event) => {
         this.setState({
-            id: event.target.value
-        });
-    }
-    pChange = (event) => {
-        this.setState({
-            pw: event.target.value
-        });
-    }
-    lChange = (event) => {
-        this.setState({
-            lore: event.target.value
+            [event.target.name]: event.target.value,
+            [event.target.pw]: event.target.value,
+            [event.target.lore]: event.target.lore
         });
     }
     btnRegister=()=>{
@@ -62,10 +54,10 @@ class Register extends React.Component{
         else{
             return(
                 <div id='comp'>
-                    <input type='text' placeholder='아이디' onChange={this.iChange}/><br/>
-                    <input type='text' placeholder='비밀번호' onChange={this.pChange}/><br/>
-                    <input type='text' placeholder='계정설명' onChange={this.lChange}/><br/>
-                    <button onClick={this.btnRegister}>회원가입</button>
+                    <input type='text' name={'id'} placeholder='아이디' onChange={this.handleChange}/>
+                    <input id='marginTop' type='text' name={'pw'} placeholder='비밀번호' onChange={this.handleChange}/>
+                    <input id='marginTop' type='text' name={'lore'} placeholder='계정설명' onChange={this.handleChange}/>
+                    <button id='marginTop' onClick={this.btnRegister}>회원가입</button>
                     <hr id='marginTop'/>
                     <h1>{status}</h1>
                 </div>

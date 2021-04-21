@@ -8,17 +8,14 @@ class Login extends React.Component{
         this.state={
             flg:false,
             id:'',
-            pw:''
+            pw:'',
+            lore:'로그인 되지 않았습니다.'
         }
     }
-    iChange = (event) => {
+    handleChange = (event) => {
         this.setState({
-            id: event.target.value
-        });
-    }
-    pChange = (event) => {
-        this.setState({
-            pw: event.target.value
+            [event.target.name]: event.target.value,
+            [event.target.pw]: event.target.value
         });
     }
     btnLogin=()=>{
@@ -33,7 +30,8 @@ class Login extends React.Component{
     }
     btnLogout=()=>{
         this.setState({
-            flg:false
+            flg:false,
+            lore:'로그인 되지 않았습니다.'
         });
         this.props.onFlgSwap(false);
     }
@@ -45,19 +43,18 @@ class Login extends React.Component{
                 <div id='comp'>
                     <button onClick={this.btnLogout}>로그아웃</button>
                     <hr id='marginTop'/>
-                    <h1>로그인 되었습니다.</h1>
-                    <h2>계정설명 : {this.state.lore}</h2>
+                    <h1>로그인 되었습니다. {this.state.lore}</h1>
                 </div>
             );
         }
         else{
             return(
                 <div id='comp'>
-                    <input type='text' onChange={this.iChange} placeholder='아이디'/><br/>
-                    <input type='text' onChange={this.pChange} placeholder='비밀번호'/><br/>
-                    <button onClick={this.btnLogin}>로그인</button>
+                    <input type='text' name={'id'} onChange={this.handleChange} placeholder='아이디'/>
+                    <input id='marginTop' type='text' name={'pw'} onChange={this.handleChange} placeholder='비밀번호'/>
+                    <button id='marginTop' onClick={this.btnLogin}>로그인</button>
                     <hr id='marginTop'/>
-                    <h1>로그인 되지 않았습니다.</h1>
+                    <h1>{this.state.lore}</h1>
                 </div>
             );
         }

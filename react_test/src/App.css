@@ -1,8 +1,13 @@
 *{
     padding: 0;
-    margin: 0 auto;
+    margin: 0;
     box-sizing: border-box;
     text-decoration: none;
+    display: block;
+    list-style: none;
+}
+title, style{
+    display: none;
 }
 #title{
     color: white;
@@ -10,7 +15,7 @@
     text-align: center;
     box-shadow: 0 3px 6px gray;
     border-radius: 3px 3px 0 0;
-    margin-bottom: 40px;
+    margin: 0 auto 40px auto;
 }
 #time{
     background: gray;
@@ -19,7 +24,7 @@
     width: 50%;
     box-shadow: 0 3px 6px gray;
     border-radius: 0 0 3px 3px;
-    margin-bottom: 10px;
+    margin:0 auto 10px auto;
 }
 button{
     border: 0;
@@ -32,15 +37,18 @@ button:active{
     background:darkgray;
 }
 #comp, #post, #temp, #balloonBox, #postAdd{
-    margin-bottom: 40px;
+    margin: 5px auto;
     padding: 10px;
     width: 55%;
     background: white;
     box-shadow: 0 3px 6px darkgray;
     border-radius: 3px;
 }
-#post{
-    margin-bottom: 5px;
+#comp, #temp, #balloonBox,#postAdd{
+    margin-bottom: 40px;
+}
+#postAdd>hr{
+    margin: 5px 0;
 }
 #root{
     padding: 10px;
@@ -52,7 +60,7 @@ ul{
     background: white;
     box-shadow: 0 3px 6px darkgray;
     border-radius: 3px;
-    margin-bottom: 40px;
+    margin: 0 auto 40px auto;
 }
 li{
     float: left;
@@ -96,10 +104,10 @@ li{
     float: left;
 }
 #add{
-    width: 20px;
+    width: 50px;
     height: 100px;
-    margin-bottom: 10px;
-    margin-right: 30px;
+    margin-bottom: 5px;
+    padding: 0 20px;
 }
 #del{
     width: 100%;
@@ -145,7 +153,7 @@ li{
     width: 90%;
     height: 50px;
     box-shadow: 0 3px 6px darkgray;
-    margin-bottom: 5px;
+    margin: 0 auto 5px auto;
     position: relative;
 }
 #alarmTime{
@@ -171,4 +179,8 @@ li{
 #loreAdd,#alarm>p{
     margin-top: 15px;
     width: 100px;
+}
+#lore{
+    margin-top: 5px;
+    width: 100%;
 }

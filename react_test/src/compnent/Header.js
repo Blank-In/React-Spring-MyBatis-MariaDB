@@ -41,8 +41,8 @@ class Header extends React.Component{
         const {value}=this.props;
         const {style,lore}=this.state;
         return (
-            <div>
-                <h1 id="title" style={style}>{lore} {value}</h1>
+            <div id="title" >
+                <h1 style={style}>{lore} {value}</h1>
             </div>
         )
     }

@@ -26,7 +26,7 @@ router.get('/login', function (req,res){
                res.send("{\"flg\":true, \"lore\":\""+rows[0].lore+"\"}");
            }
            else{
-               res.send("{\"flg\":false, \"lore\":\"\"}");
+               res.send("{\"flg\":false, \"lore\":\"아이디 또는 비밀번호가 틀렸습니다.\"}");
            }
        }
        else{
@@ -40,7 +40,6 @@ router.get('/register',function (req,res){
     const pw=req.query.pw;
     const lore=req.query.lore;
     let sql='insert into test_user values(\''+id+'\',\''+pw+'\',\''+lore+'\');';
-    console.log(sql);
     connection.query(sql,function(err){
        if(!err){
            res.send("{\"flg\":true, \"status\":\"회원가입이 완료되었습니다.\"}");
@@ -49,6 +48,30 @@ router.get('/register',function (req,res){
             res.send("{\"flg\":false, \"status\":\"이미 존재하는 아이디입니다.\"}");
         }
     });
+});
+
+router.get('/getPosts', function(req,res){
+    const sql='SELECT *,(SELECT lore FROM test_user u WHERE p.id=u.id)u_lore FROM posts p';
+    connection.query(sql,function(err,rows) {
+        if(!err){
+            res.send(rows);
+        }
+    });
+});
+
+router.get('/addPost',function(req,res){
+    const title=req.query.title;
+    const lore=req.query.lore;
+    const id=req.query.id;
+    let sql='insert into posts (title,lore,id,p_id) values(\''+title+'\',\''+lore+'\',\''+id+'\',(select max(p_id)+1 from posts p2))'
+    connection.query(sql);
+    res.redirect("./getPosts");
+})
+
+router.get('/delPost', function (req,res){
+    const sql='DELETE FROM posts WHERE p_id='+req.query.p_id;
+    connection.query(sql);
+    res.redirect("./getPosts");
 });
 
 module.exports=router;
