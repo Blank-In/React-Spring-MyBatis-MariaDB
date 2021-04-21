@@ -30,7 +30,7 @@ class Gradient extends React.Component{
             b: event.target.value
         });
     }
-    handleCreate = (event) => {
+    handleCreate = () => {
         this.setState({
             colors: this.state.colors.concat({
                 r:this.state.r,

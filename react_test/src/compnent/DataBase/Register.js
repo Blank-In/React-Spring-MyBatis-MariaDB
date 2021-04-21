@@ -40,14 +40,14 @@ class Register extends React.Component{
         if(this.props.logFlg){
             return(
                 <div id='comp'>
-                    <h1>{this.props.id} 로그인이 되어있습니다.</h1>
+                    <h2>{this.props.id} 로그인이 되어있습니다.</h2>
                 </div>
             )
         }
         else if(flg){
             return(
                 <div id='comp'>
-                    <h1>{status}</h1>
+                    <h2>{status}</h2>
                 </div>
             )
         }

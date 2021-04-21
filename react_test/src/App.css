@@ -184,3 +184,11 @@ li{
     margin-top: 5px;
     width: 100%;
 }
+#vote{
+    height: 40px;
+    background: whitesmoke;
+    box-shadow: 0 0 3px darkgray;
+    margin-bottom: 10px;
+    line-height: 40px;
+    text-align: center;
+}

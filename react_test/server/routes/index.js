@@ -19,10 +19,10 @@ router.get('/', (
 router.get('/login', function (req,res){
     const id=req.query.id;
     const pw=req.query.pw;
-    const sql='select * from test_user where id=\''+id+'\' AND pw=\''+pw+'\';'
+    const sql=`select * from test_user where id='${id}' AND pw='${pw}'`
     connection.query(sql,function(err,rows){
        if(!err){
-           if(rows[0]!=undefined){
+           if(rows[0]!==undefined){
                res.send("{\"flg\":true, \"lore\":\""+rows[0].lore+"\"}");
            }
            else{
@@ -39,7 +39,7 @@ router.get('/register',function (req,res){
     const id=req.query.id;
     const pw=req.query.pw;
     const lore=req.query.lore;
-    let sql='insert into test_user values(\''+id+'\',\''+pw+'\',\''+lore+'\');';
+    let sql=`insert into test_user values('${id}','${pw}','${lore}')`;
     connection.query(sql,function(err){
        if(!err){
            res.send("{\"flg\":true, \"status\":\"회원가입이 완료되었습니다.\"}");
@@ -51,11 +51,9 @@ router.get('/register',function (req,res){
 });
 
 router.get('/getPosts', function(req,res){
-    const sql='SELECT *,(SELECT lore FROM test_user u WHERE p.id=u.id)u_lore FROM posts p';
+    const sql=`select *,(select lore from test_user as u where p.id = u.id) as u_lore from posts as p`;
     connection.query(sql,function(err,rows) {
-        if(!err){
             res.send(rows);
-        }
     });
 });
 
@@ -63,15 +61,24 @@ router.get('/addPost',function(req,res){
     const title=req.query.title;
     const lore=req.query.lore;
     const id=req.query.id;
-    let sql='insert into posts (title,lore,id,p_id) values(\''+title+'\',\''+lore+'\',\''+id+'\',(select max(p_id)+1 from posts p2))'
+    let sql=`insert into posts (title,lore,id,p_id) values('${title}','${lore}','${id}',(select ifnull(max(p_id),0)+1 from posts p2))`
     connection.query(sql);
     res.redirect("./getPosts");
 })
 
 router.get('/delPost', function (req,res){
-    const sql='DELETE FROM posts WHERE p_id='+req.query.p_id;
+    const sql=`DELETE FROM posts WHERE p_id=${req.query.p_id}`;
     connection.query(sql);
     res.redirect("./getPosts");
 });
+
+router.get('/getVote', function(req,res){
+    let sql=`SELECT vote,(SELECT v_name FROM vote_data WHERE num=vote) v_name,COUNT(vote) cnt FROM user_vote GROUP BY vote`;
+    connection.query(sql,function(err,rows){
+        if(!err){
+            res.send(rows);
+        }
+    });
+})
 
 module.exports=router;

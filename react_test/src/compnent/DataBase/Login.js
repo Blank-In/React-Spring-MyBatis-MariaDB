@@ -43,7 +43,7 @@ class Login extends React.Component{
                 <div id='comp'>
                     <button onClick={this.btnLogout}>로그아웃</button>
                     <hr id='marginTop'/>
-                    <h1>로그인 되었습니다. {this.state.lore}</h1>
+                    <h2>로그인 되었습니다. {this.state.lore}</h2>
                 </div>
             );
         }
@@ -54,7 +54,7 @@ class Login extends React.Component{
                     <input id='marginTop' type='text' name={'pw'} onChange={this.handleChange} placeholder='비밀번호'/>
                     <button id='marginTop' onClick={this.btnLogin}>로그인</button>
                     <hr id='marginTop'/>
-                    <h1>{this.state.lore}</h1>
+                    <h2>{this.state.lore}</h2>
                 </div>
             );
         }

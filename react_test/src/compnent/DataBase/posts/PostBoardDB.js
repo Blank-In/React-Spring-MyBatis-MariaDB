@@ -1,8 +1,8 @@
 import React from "react";
-import DBpost from "./DBpost";
+import PostDB from "./PostDB";
 import {connect} from "react-redux";
 
-class DBpostBoard extends React.Component {
+class PostBoardDB extends React.Component {
     constructor(props) {
         super(props);
         this.state={
@@ -52,7 +52,7 @@ class DBpostBoard extends React.Component {
     render(){
         const postList=this.state.posts.map(
             (post)=>(
-                <DBpost
+                <PostDB
                     p_id={post.p_id}
                     title={post.title}
                     lore={post.lore}
@@ -63,7 +63,7 @@ class DBpostBoard extends React.Component {
             )
         );
         let addPost=(<div>
-            <h1 id='comp'>글을 작성하려면 로그인이 필요합니다.</h1>
+            <h2 id='comp'>글을 작성하려면 로그인이 필요합니다.</h2>
         </div>);
         if(this.props.logFlg){
             addPost=(<div id='comp'>
@@ -88,5 +88,5 @@ let mapStateToProps=(state)=>{
     };
 }
 
-DBpostBoard=connect(mapStateToProps)(DBpostBoard);
-export default DBpostBoard;
+PostBoardDB=connect(mapStateToProps)(PostBoardDB);
+export default PostBoardDB;

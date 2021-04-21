@@ -17,13 +17,14 @@ import counterApp from "./redux/reducers";
 import {Provider} from "react-redux";
 import Spring from "./spring/Spring";
 import Register from "./compnent/DataBase/Register";
-import DBpostBoard from "./compnent/DataBase/DBpostBoard";
+import PostBoardDB from "./compnent/DataBase/posts/PostBoardDB";
+import Vote from "./compnent/DataBase/vote/Vote";
 
 const store = createStore(counterApp);
 
 function tick(){
     ReactDOM.render(
-         <Provider store={store}>
+        <Provider store={store}>
             <Header />
             <PostBoard />
             <List />
@@ -36,7 +37,8 @@ function tick(){
             <Spring />
             <Login />
             <Register />
-            <DBpostBoard />
+            <PostBoardDB />
+            <Vote />
         </Provider>,
         document.getElementById('root')
     );
