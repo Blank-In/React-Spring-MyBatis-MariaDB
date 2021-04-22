@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import customAxios from "./customAxios";
 
-function Spring(){
+function SpringCon(){
     const [ip,setIp]=useState('');
     function callback(data){
         setIp(data);
@@ -17,4 +17,4 @@ function Spring(){
         </div>
     );
 }
-export default Spring;
+export default SpringCon;

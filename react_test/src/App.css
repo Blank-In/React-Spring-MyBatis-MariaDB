@@ -46,7 +46,7 @@ button:active{
 #comp, #temp, #balloonBox,#postAdd{
     margin-bottom: 40px;
 }
-#postAdd>hr{
+hr{
     margin: 5px 0;
 }
 #root{
@@ -187,9 +187,8 @@ li{
     height: 40px;
     box-shadow: 0 0 3px darkgray;
     margin-bottom: 10px;
-    line-height: 40px;
-    text-align: center;
     transition: width 0.5s ease;
+    border-radius: 3px;
 }
 input{
     margin-bottom: 5px;

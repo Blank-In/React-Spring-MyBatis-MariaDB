@@ -79,6 +79,8 @@ class VoteStatus extends React.Component{
             )
         );
         return(<div id='comp'>
+            <h2>제77대 대통령 선거</h2>
+            <hr/>
             {voteList}
             <button onClick={this.onBlank}>기권</button>
         </div>)
