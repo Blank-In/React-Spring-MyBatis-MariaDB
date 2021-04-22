@@ -31,7 +31,6 @@ button{
     background: lightgray;
     width: 100px;
     box-shadow: 0 1px 3px darkgray;
-    margin-right: 5px;
 }
 button:active{
     background:darkgray;
@@ -186,9 +185,12 @@ li{
 }
 #vote{
     height: 40px;
-    background: whitesmoke;
     box-shadow: 0 0 3px darkgray;
     margin-bottom: 10px;
     line-height: 40px;
     text-align: center;
+    transition: width 0.5s ease;
+}
+input{
+    margin-bottom: 5px;
 }

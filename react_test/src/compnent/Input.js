@@ -21,9 +21,9 @@ class Input extends React.Component{
         return(
             <div id='comp'>
                 <form onSubmit={this.handleChange}>
-                    <input id='marginBottom' type='text' name={'name'} value={name} onChange={this.handleChange}/>
-                    <input id='marginBottom' type='number' name={'age'} value={age} onChange={this.handleChange}/>
-                    <input id='marginBottom' type='submit' value='Submit'/>
+                    <input type='text' name={'name'} value={name} onChange={this.handleChange}/>
+                    <input type='number' name={'age'} value={age} onChange={this.handleChange}/>
+                    <input type='submit' value='Submit'/>
                     <hr/>
                 </form>
                 <h2>{this.state.name}</h2>

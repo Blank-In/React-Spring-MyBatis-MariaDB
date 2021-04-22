@@ -73,12 +73,30 @@ router.get('/delPost', function (req,res){
 });
 
 router.get('/getVote', function(req,res){
-    let sql=`SELECT vote,(SELECT v_name FROM vote_data WHERE num=vote) v_name,COUNT(vote) cnt FROM user_vote GROUP BY vote`;
+    let sql=`SELECT *,(SELECT COUNT(*) FROM user_vote WHERE vote=num) cnt,`+
+        `if(num=(SELECT vote FROM user_vote WHERE id='${req.query.id}'),1,0) flg FROM vote_data`;
     connection.query(sql,function(err,rows){
         if(!err){
             res.send(rows);
         }
     });
+})
+
+router.get('/setVote', function(req,res){
+    let sql=`insert into user_vote value('${req.query.id}',${req.query.vote})`
+    connection.query(sql,function(err){
+        if(err){
+            sql=`update user_vote SET vote=${req.query.vote} WHERE id='${req.query.id}'`
+            connection.query(sql);
+        }
+    });
+    res.redirect("./getVote?id="+req.query.id);
+})
+
+router.get('/delVote', function(req,res){
+    let sql=`DELETE FROM user_vote WHERE id='${req.query.id}'`
+    connection.query(sql);
+    res.redirect("./getVote?id="+req.query.id);
 })
 
 module.exports=router;

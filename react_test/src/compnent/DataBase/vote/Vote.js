@@ -1,46 +1,28 @@
-/*
-user_vote
-    유저아이디
-    투표한 번호
-vote_data
-    투표 번호
-    이름
-현재 후보 목록과 투표 수 그래프 제작해놨음
-투표 기능과 투표 제거 기능추가와 비주얼 향상
-*/
 import React from "react";
 
 class Vote extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state={
-            votes:[]
-        }
-        fetch('api/getVote')
-            .then(res=>res.json())
-            .then(data=>this.setState({
-                votes:data
-            }));
+    handleClick=()=>{
+        const {num,onVote}=this.props;
+        onVote(num);
     }
-
     render() {
-        const {votes}=this.state;
-        let cnt=0;
-        for(let a=0;a<votes.length;++a){
-            cnt+=votes[a].cnt;
+        const {max,v_name,flg,cnt}=this.props;
+        let color='whitesmoke';
+        if(flg){
+            color='orangered';
         }
-        const voteList=votes.map(
-            (vote)=>(
-                <div id='vote' style={{
-                    width: 100/cnt*vote.cnt+'%',
-                }}>
-                    <h4>{vote.v_name} {vote.cnt}표</h4>
-                </div>
-            )
-        );
-        return(<div id='comp'>
-            {voteList}
-        </div>)
+        return(
+            <button
+                id='vote'
+                style={{
+                    width: (100/max*(cnt+1))+'%',
+                    background: color
+                }}
+                onClick={this.handleClick}
+            >
+                <h4>{v_name} {cnt}표</h4>
+            </button>
+        )
     }
 }
 

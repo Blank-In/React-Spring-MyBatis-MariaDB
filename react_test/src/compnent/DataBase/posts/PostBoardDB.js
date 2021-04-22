@@ -53,7 +53,7 @@ class PostBoardDB extends React.Component {
         const postList=this.state.posts.map(
             (post)=>(
                 <PostDB
-                    p_id={post.p_id}
+                    key={post.p_id}
                     title={post.title}
                     lore={post.lore}
                     id={post.id}
@@ -65,7 +65,7 @@ class PostBoardDB extends React.Component {
         let addPost=(<div>
             <h2 id='comp'>글을 작성하려면 로그인이 필요합니다.</h2>
         </div>);
-        if(this.props.logFlg){
+        if(this.props.id!==''){
             addPost=(<div id='comp'>
                 <input type='text' value={this.state.title} name={'title'} onChange={this.handleChange} placeholder='제목'/>
                 <hr id='marginTop'/>
@@ -83,8 +83,7 @@ class PostBoardDB extends React.Component {
 }
 let mapStateToProps=(state)=>{
     return{
-        id:state.counter.id,
-        logFlg:state.counter.logFlg
+        id:state.counter.id
     };
 }
 

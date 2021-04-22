@@ -37,7 +37,7 @@ class Register extends React.Component{
     }
     render() {
         const {flg,status}=this.state;
-        if(this.props.logFlg){
+        if(this.props.id!==''){
             return(
                 <div id='comp'>
                     <h2>{this.props.id} 로그인이 되어있습니다.</h2>
@@ -55,11 +55,11 @@ class Register extends React.Component{
             return(
                 <div id='comp'>
                     <input type='text' name={'id'} placeholder='아이디' onChange={this.handleChange}/>
-                    <input id='marginTop' type='text' name={'pw'} placeholder='비밀번호' onChange={this.handleChange}/>
-                    <input id='marginTop' type='text' name={'lore'} placeholder='계정설명' onChange={this.handleChange}/>
-                    <button id='marginTop' onClick={this.btnRegister}>회원가입</button>
+                    <input type='text' name={'pw'} placeholder='비밀번호' onChange={this.handleChange}/>
+                    <input type='text' name={'lore'} placeholder='계정설명' onChange={this.handleChange}/>
+                    <button onClick={this.btnRegister}>회원가입</button>
                     <hr id='marginTop'/>
-                    <h1>{status}</h1>
+                    <h2>{status}</h2>
                 </div>
             )
         }
@@ -68,8 +68,7 @@ class Register extends React.Component{
 
 let mapStateToProps=(state)=>{
     return{
-        id:state.counter.id,
-        logFlg:state.counter.logFlg
+        id:state.counter.id
     };
 }
 

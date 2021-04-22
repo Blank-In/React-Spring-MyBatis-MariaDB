@@ -18,7 +18,7 @@ import {Provider} from "react-redux";
 import Spring from "./spring/Spring";
 import Register from "./compnent/DataBase/Register";
 import PostBoardDB from "./compnent/DataBase/posts/PostBoardDB";
-import Vote from "./compnent/DataBase/vote/Vote";
+import VoteStatus from "./compnent/DataBase/vote/VoteStatus";
 
 const store = createStore(counterApp);
 
@@ -38,7 +38,7 @@ function tick(){
             <Login />
             <Register />
             <PostBoardDB />
-            <Vote />
+            <VoteStatus />
         </Provider>,
         document.getElementById('root')
     );

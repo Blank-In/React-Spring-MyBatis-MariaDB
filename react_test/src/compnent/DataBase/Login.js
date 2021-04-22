@@ -1,5 +1,5 @@
 import React from "react";
-import {flgSwap, setID} from "../../redux/actions";
+import {setID} from "../../redux/actions";
 import {connect} from "react-redux";
 
 class Login extends React.Component{
@@ -33,12 +33,11 @@ class Login extends React.Component{
             flg:false,
             lore:'로그인 되지 않았습니다.'
         });
-        this.props.onFlgSwap(false);
+        this.props.onSetId('');
     }
     render(){
         const {flg}=this.state;
         if(flg){
-            this.props.onFlgSwap(true);
             return(
                 <div id='comp'>
                     <button onClick={this.btnLogout}>로그아웃</button>
@@ -63,7 +62,6 @@ class Login extends React.Component{
 
 let mapDispatchToProps=(dispatch)=>{
     return {
-        onFlgSwap: (flg)=>dispatch(flgSwap(flg)),
         onSetId: (id)=>dispatch(setID(id))
     }
 }
@@ -71,7 +69,6 @@ let mapDispatchToProps=(dispatch)=>{
 let mapStateToProps=(state)=>{
     return{
         id:state.counter.id,
-        logFlg:state.counter.logFlg
     };
 }
 
