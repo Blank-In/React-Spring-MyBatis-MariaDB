@@ -2,8 +2,8 @@ import React from "react";
 
 class PostDB extends React.Component{
     handleRemove=()=>{
-        const {id,key,onRemove}=this.props;
-        onRemove(id,key);
+        const {id,p_id,onRemove}=this.props;
+        onRemove(id,p_id);
     }
     render(){
         const {title, lore, id, u_lore}=this.props;

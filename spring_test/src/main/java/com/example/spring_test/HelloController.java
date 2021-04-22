@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 @RestController
 @RequestMapping("/api")
@@ -24,6 +27,15 @@ public class HelloController {
         value+=request.getRemoteAddr()+" | ";
         value+=request.getRequestURI()+" | ";
         value+=request.getMethod();
+        System.out.println(value);
+        try{
+            Connection con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test_db","blank","");
+            PreparedStatement ps= con.prepareStatement("select * from test_user");
+            ResultSet rs= ps.executeQuery();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
         return value;
     }
 }

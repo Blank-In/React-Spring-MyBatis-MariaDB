@@ -9,8 +9,10 @@ class PopUp extends React.Component{
     }
     render(){
         const id=this.state.focused ? 'popUp':'popDown';
+        const text=this.state.focused ? '▼':'▲';
         return(
-            <div id='pop' className={id} onMouseOver={this.focus} onMouseLeave={this.focus}>
+            <div id='pop' className={id}>
+                <div onClick={this.focus}>{text}</div>
             </div>
         )
     }

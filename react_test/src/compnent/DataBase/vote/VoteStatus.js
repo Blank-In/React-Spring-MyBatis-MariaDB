@@ -64,7 +64,7 @@ class VoteStatus extends React.Component{
                 max=votes[a].cnt;
             }
         }
-        ++max;
+        max+=0.5;
         const voteList=votes.map(
             (vote)=>(
                 <Vote

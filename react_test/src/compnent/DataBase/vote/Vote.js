@@ -15,7 +15,7 @@ class Vote extends React.Component{
             <button
                 id='vote'
                 style={{
-                    width: (100/max*(cnt+1))+'%',
+                    width: (100/max*(cnt+0.5))+'%',
                     background: color
                 }}
                 onClick={this.handleClick}

@@ -99,4 +99,33 @@ router.get('/delVote', function(req,res){
     res.redirect("./getVote?id="+req.query.id);
 })
 
+router.get('/getScore', function (req,res){
+    let sql=`select * from score_board`
+    connection.query(sql,function(err,rows){
+        if(!err){
+            res.send(rows);
+        }
+    });
+})
+
+router.get('/addScore',function(req,res){
+    const add=req.query.add;
+    const id=req.query.id;
+    let score,cnt;
+    let sql='select * from score_board where id=${id}';
+    console.log(id);
+    //쿼리를 실행하면 작동하지 않고 에러가 발생해 아래쪽 b 출력으로 감
+    connection.query(sql,function(err,rows){
+        if(!err){
+            score=rows[0].score;
+            cnt=rows[0].cnt;
+            console.log((score*cnt+add)/(cnt+1));
+            sql=`update score_board set score=${(score * cnt + add) / (cnt + 1)}, cnt=${cnt + 1} where id=${id}`;
+            connection.query(sql);
+        }
+    })
+    console.log("b");
+    res.redirect("./getScore");
+})
+
 module.exports=router;

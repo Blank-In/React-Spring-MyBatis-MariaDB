@@ -56,6 +56,7 @@ class PostBoardDB extends React.Component {
                     key={post.p_id}
                     title={post.title}
                     lore={post.lore}
+                    p_id={post.p_id}
                     id={post.id}
                     u_lore={post.u_lore}
                     onRemove={this.handleRemove}

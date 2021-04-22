@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import customAxios from "./customAxios";
 
 function SpringCon(){
-    const [ip,setIp]=useState('');
+    const [ip,setIp]=useState('Spring 서버와 연결 중 오류 발생');
     function callback(data){
         setIp(data);
     }
@@ -13,7 +13,7 @@ function SpringCon(){
     );
     return(
         <div id='comp'>
-            <h1>{ip}</h1>
+            <h2>{ip}</h2>
         </div>
     );
 }

@@ -38,7 +38,7 @@ button:active{
 #comp, #post, #temp, #balloonBox, #postAdd{
     margin: 5px auto;
     padding: 10px;
-    width: 55%;
+    width: 90%;
     background: white;
     box-shadow: 0 3px 6px darkgray;
     border-radius: 3px;
@@ -54,7 +54,7 @@ hr{
     background: linear-gradient(mistyrose,azure);
 }
 ul{
-    width: 45%;
+    width: 80%;
     height: 50px;
     background: white;
     box-shadow: 0 3px 6px darkgray;
@@ -69,7 +69,7 @@ li{
     float: left;
 }
 #temp>input{
-    margin: 0 10px;
+    margin: 3px 10px 0 10px;
     float: left;
 }
 #marginTop{
@@ -114,7 +114,7 @@ li{
 }
 #balloonBox{
     height: 130px;
-    width: 60%;
+    width: 90%;
     position: relative;
     overflow: hidden;
 }
@@ -148,12 +148,20 @@ li{
     transition: bottom .3s ease;
     bottom: -370px;
 }
+#pop>div{
+    width: 100%;
+    border-radius: 10px;
+    height: 20px;
+    text-align: center;
+    color: lightgray;
+}
 #alarm{
     width: 90%;
     height: 50px;
     box-shadow: 0 3px 6px darkgray;
     margin: 0 auto 5px auto;
     position: relative;
+    overflow: hidden;
 }
 #alarmTime{
     float: left;
@@ -190,6 +198,13 @@ li{
     transition: width 0.5s ease;
     border-radius: 3px;
 }
+#vote:hover{
+    border: 1px solid black;
+}
 input{
     margin-bottom: 5px;
+}
+#score{
+    height: 50px;
+    width: 90%;
 }
