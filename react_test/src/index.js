@@ -1,15 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './compnent/Header';
-import PostBoard from './compnent/posts/PostBoard';
-import List from './compnent/List';
-import Input from './compnent/Input';
-import Temp from './compnent/Temp';
-import Gradient from './compnent/gradation/Gradient';
-import BalloonBox from "./compnent/balloon/BalloonBox";
-import PopUp from "./compnent/PopUp"
 import SpringCon from "./spring/SpringCon";
-import Clock from "./compnent/timer/Clock";
 import Login from "./compnent/DataBase/Login";
 import './App.css'
 import reportWebVitals from './reportWebVitals';
@@ -20,20 +12,29 @@ import Register from "./compnent/DataBase/Register";
 import PostBoardDB from "./compnent/DataBase/posts/PostBoardDB";
 import VoteStatus from "./compnent/DataBase/vote/VoteStatus";
 import ScoreBoard from "./compnent/DataBase/scoreBoard/ScoreBoard";
+import PopNotice from "./compnent/DataBase/PopNotice";
+import BalloonBox from "./compnent/balloon/BalloonBox";
+import Gradient from "./compnent/gradation/Gradient";
+import Temp from "./compnent/Temp";
+import Clock from "./compnent/timer/Clock";
 
 const store = createStore(counterApp);
-
+/*
+ngrok http -host-header="localhost:3000" 3000
+ */
 function tick(){
     ReactDOM.render(
         <Provider store={store}>
             <Header />
+            <PopNotice />
+                {/*
             <PostBoard />
             <List />
             <Input />
+                */}
             <Temp />
             <Gradient/>
             <BalloonBox />
-            <PopUp />
             <Clock />
             <SpringCon />
             <Login />

@@ -22,7 +22,7 @@ class Header extends React.Component{
                     position: "fixed",
                     left: "25%",
                     top: "45%",
-                    zIndex: "100"
+                    zIndex: "200"
                 },
                 lore:"울리다. 알람"
             })
@@ -41,8 +41,8 @@ class Header extends React.Component{
         const {value}=this.props;
         const {style,lore}=this.state;
         return (
-            <div id="title" >
-                <h1 style={style}>{lore} {value}</h1>
+            <div id="title" style={style}>
+                <h1>{lore} {value}</h1>
             </div>
         )
     }

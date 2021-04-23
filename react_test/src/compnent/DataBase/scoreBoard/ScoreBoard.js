@@ -13,6 +13,13 @@ class ScoreBoard extends React.Component{
                 scores:data
             }));
     }
+    handleReload=()=>{
+        fetch('api/getScore')
+            .then(res=>res.json())
+            .then(data=>this.setState({
+                scores:data
+            }));
+    }
     handleClick=(id,add)=>{
         fetch('api/addScore?id='+id+'&add='+add)
             .then(res=>res.json())
@@ -34,7 +41,10 @@ class ScoreBoard extends React.Component{
             )
         );
         return(
-            <div id='comp'>
+            <div id='scoreBoard'>
+                <h2 id='fLeft'>평가 남기기</h2>
+                <button onClick={this.handleReload}>평점 새로고침</button>
+                <hr/>
                 {scoreList}
             </div>
         )

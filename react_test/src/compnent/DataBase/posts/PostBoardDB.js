@@ -16,10 +16,16 @@ class PostBoardDB extends React.Component {
                 posts:data
             }));
     }
+    handleReload=()=>{
+        fetch('api/getPosts')
+            .then(res=>res.json())
+            .then(data=>this.setState({
+                posts:data
+            }));
+    }
     handleChange = (event) => {
         this.setState({
-            [event.target.name]: event.target.value,
-            [event.target.content]: event.target.value
+            [event.target.name]: event.target.value
         });
     }
     handleRemove=(id,p_id)=>{
@@ -75,8 +81,9 @@ class PostBoardDB extends React.Component {
             </div>);
         }
         return (
-            <div>
+            <div id='postBoard'>
                 {postList}
+                <button id='reload' onClick={this.handleReload}>글 목록 새로고침</button>
                 {addPost}
             </div>
         )

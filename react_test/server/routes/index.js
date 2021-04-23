@@ -11,10 +11,9 @@ const connection=mysql.createConnection({
 });
 connection.connect();
 
-router.get('/', (
-    req,
-    res)=>res.json({username:'blank'})
-);
+router.get('/', function(req, res){
+    res.send(`{'username':'blank'}`);
+});
 
 router.get('/login', function (req,res){
     const id=req.query.id;
@@ -64,7 +63,7 @@ router.get('/addPost',function(req,res){
     let sql=`insert into posts (title,lore,id,p_id) values('${title}','${lore}','${id}',(select ifnull(max(p_id),0)+1 from posts p2))`
     connection.query(sql);
     res.redirect("./getPosts");
-})
+});
 
 router.get('/delPost', function (req,res){
     const sql=`DELETE FROM posts WHERE p_id=${req.query.p_id}`;
@@ -73,14 +72,15 @@ router.get('/delPost', function (req,res){
 });
 
 router.get('/getVote', function(req,res){
-    let sql=`SELECT *,(SELECT COUNT(*) FROM user_vote WHERE vote=num) cnt,`+
-        `if(num=(SELECT vote FROM user_vote WHERE id='${req.query.id}'),1,0) flg FROM vote_data`;
+    let sql=`SELECT *,(SELECT COUNT(*) FROM user_vote WHERE vote = num) cnt
+        ,if(num = (SELECT vote FROM user_vote WHERE id = '${req.query.id}'), 1, 0) flg
+        FROM vote_data`;
     connection.query(sql,function(err,rows){
         if(!err){
             res.send(rows);
         }
     });
-})
+});
 
 router.get('/setVote', function(req,res){
     let sql=`insert into user_vote value('${req.query.id}',${req.query.vote})`
@@ -91,13 +91,13 @@ router.get('/setVote', function(req,res){
         }
     });
     res.redirect("./getVote?id="+req.query.id);
-})
+});
 
 router.get('/delVote', function(req,res){
     let sql=`DELETE FROM user_vote WHERE id='${req.query.id}'`
     connection.query(sql);
     res.redirect("./getVote?id="+req.query.id);
-})
+});
 
 router.get('/getScore', function (req,res){
     let sql=`select * from score_board`
@@ -106,26 +106,35 @@ router.get('/getScore', function (req,res){
             res.send(rows);
         }
     });
-})
+});
 
 router.get('/addScore',function(req,res){
-    const add=req.query.add;
-    const id=req.query.id;
+    const add=parseInt(req.query.add);
+    const id=parseInt(req.query.id);
     let score,cnt;
-    let sql='select * from score_board where id=${id}';
-    console.log(id);
+    let sql=`select * from score_board where id=${id}`;
     //쿼리를 실행하면 작동하지 않고 에러가 발생해 아래쪽 b 출력으로 감
     connection.query(sql,function(err,rows){
         if(!err){
             score=rows[0].score;
             cnt=rows[0].cnt;
-            console.log((score*cnt+add)/(cnt+1));
             sql=`update score_board set score=${(score * cnt + add) / (cnt + 1)}, cnt=${cnt + 1} where id=${id}`;
             connection.query(sql);
         }
-    })
-    console.log("b");
+        else{
+            console.log(err);
+        }
+    });
     res.redirect("./getScore");
+});
+
+router.get('/getNotices', function(req,res){
+    const sql=`select * from notice`;
+    connection.query(sql,function(err,rows){
+       if(!err){
+           res.send(rows);
+       }
+    });
 })
 
 module.exports=router;

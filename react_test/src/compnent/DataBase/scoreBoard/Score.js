@@ -9,7 +9,7 @@ class Score extends React.Component{
     }
     handleChange = (event) => {
         this.setState({
-            [event.target.select]: event.target.value,
+            select: event.target.value,
         });
     }
     handleClick=()=>{
@@ -21,15 +21,18 @@ class Score extends React.Component{
         const {score,cnt,lore}=this.props;
         return(
             <div id='score'>
-                이름: {lore} | 평점: {score} | 평점을 남긴 수: {cnt}
-                <select id={'select'} onChange={this.handleChange}>
+                <h3>{lore}</h3>
+                <hr/>
+                <h4>{score.toFixed(2)}점</h4>
+                <h5>({cnt}명)</h5>
+                <select onChange={this.handleChange}>
                     <option>5</option>
                     <option>4</option>
                     <option>3</option>
                     <option>2</option>
                     <option>1</option>
                 </select>
-                <button onClick={this.handleClick}>평점 남기기</button>
+                <button onClick={this.handleClick}>점으로 평가 남기기</button>
             </div>
         )
     }

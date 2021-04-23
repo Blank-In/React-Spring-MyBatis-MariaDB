@@ -9,10 +9,10 @@ class PostDB extends React.Component{
         const {title, lore, id, u_lore}=this.props;
         return(
             <div id="post">
-                <h2>{title}</h2>
-                <h4>작성자 : {id}({u_lore})</h4>
+                <h3>{title}</h3>
+                <h5>작성자 : {id}({u_lore})</h5>
                 <hr/>
-                <h3>{lore}</h3>
+                <p>{lore}</p>
                 <button id='marginTop' onClick={this.handleRemove}>삭제</button>
             </div>
         )

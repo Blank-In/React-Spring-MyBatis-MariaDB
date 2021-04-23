@@ -35,6 +35,13 @@ class VoteStatus extends React.Component{
         }
         return true;
     }
+    onReload=()=>{
+        fetch('api/getVote?id='+this.props.id)
+            .then(res=>res.json())
+            .then(data=>this.setState({
+                votes:data
+            }));
+    }
     onBlank=()=>{
         if(this.props.id!==''){
             fetch('api/delVote?id='+ this.props.id)
@@ -79,7 +86,8 @@ class VoteStatus extends React.Component{
             )
         );
         return(<div id='comp'>
-            <h2>제77대 대통령 선거</h2>
+            <h2 id='fLeft'>제77대 대통령 선거</h2>
+            <button id='reload' onClick={this.onReload}>투표 현황 새로고침</button>
             <hr/>
             {voteList}
             <button onClick={this.onBlank}>기권</button>

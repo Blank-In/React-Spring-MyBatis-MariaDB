@@ -5,7 +5,7 @@ class Register extends React.Component{
     constructor(props) {
         super(props);
         this.state={
-            status:"회원가입을 해주세요.",
+            status:"계정이 없다면 회원가입을 해주세요.",
             id:"",
             pw:"",
             lore:"",

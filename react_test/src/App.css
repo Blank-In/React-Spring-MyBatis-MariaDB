@@ -29,13 +29,17 @@ title, style{
 button{
     border: 0;
     background: lightgray;
-    width: 100px;
+    width: 150px;
+    height: 30px;
     box-shadow: 0 1px 3px darkgray;
+}
+button:hover{
+    cursor: pointer;
 }
 button:active{
     background:darkgray;
 }
-#comp, #post, #temp, #balloonBox, #postAdd{
+#comp, #post, #temp, #balloonBox, #postAdd, #score, #scoreBoard{
     margin: 5px auto;
     padding: 10px;
     width: 90%;
@@ -43,8 +47,8 @@ button:active{
     box-shadow: 0 3px 6px darkgray;
     border-radius: 3px;
 }
-#comp, #temp, #balloonBox,#postAdd{
-    margin-bottom: 40px;
+#comp, #temp, #balloonBox,#postAdd,#scoreBoard{
+    margin-bottom: 60px;
 }
 hr{
     margin: 5px 0;
@@ -101,6 +105,7 @@ li{
     width: 33%;
     height: 60px;
     float: left;
+    cursor: pointer;
 }
 #add{
     width: 50px;
@@ -133,27 +138,31 @@ li{
 }
 #pop{
     position: fixed;
-    right: 20px;
-    width: 200px;
-    height: 400px;
+    right: 5%;
+    width: 90%;
+    height: 75%;
     background: white;
     border-radius: 10px;
     box-shadow: 0 0 3px dimgray;
+    z-index: 100;
+    padding: 0 20px;
 }
 .popUp{
     transition: bottom .3s ease;
-    bottom: -100px;
+    bottom: -5%;
 }
 .popDown{
     transition: bottom .3s ease;
-    bottom: -370px;
+    bottom: -70%;
 }
 #pop>div{
     width: 100%;
     border-radius: 10px;
-    height: 20px;
+    height: 7%;
+    font-size: 200%;
     text-align: center;
     color: lightgray;
+    cursor: pointer;
 }
 #alarm{
     width: 90%;
@@ -173,6 +182,7 @@ li{
     margin-top: 10px;
     position: absolute;
     right: 10px;
+    width: 70px;
 }
 #newTime{
     width: 50px;
@@ -204,7 +214,53 @@ li{
 input{
     margin-bottom: 5px;
 }
+#scoreBoard{
+    height: 200px;
+}
 #score{
-    height: 50px;
+    width: 45%;
+    float: left;
+    margin: auto 2.5%;
+}
+#score>h4{
+    float: left;
+    margin-right: 5px;
+    line-height: 20px;
+}
+#score>h5{
+    line-height: 20px;
+}
+#score>select{
+    font-size: 20px;
+    float: left;
+    height: 25px;
+    background: lightgray;
+    border: none;
+    box-shadow: -1px 1px 2px darkgray;
+}
+#score>select:focus{
+    outline: none;
+}
+#score>button{
+    text-align: left;
+    height: 25px;
+    box-shadow: -1px 1px 2px darkgray;
+}
+#fLeft{
+    float: left;
+    margin-right: 10px;
+}
+#postBoard>button{
+    margin: 10px auto 10px auto;
     width: 90%;
+}
+#pop>#left{
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+}
+#pop>#right{
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
 }
