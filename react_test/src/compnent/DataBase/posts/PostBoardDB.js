@@ -8,7 +8,12 @@ class PostBoardDB extends React.Component {
         this.state={
             posts:[],
             title:'',
-            lore:''
+            lore:'',
+            vFlg:true,
+            style:{
+                display:"block"
+            }
+
         }
         fetch('api/getPosts')
             .then(res=>res.json())
@@ -16,6 +21,7 @@ class PostBoardDB extends React.Component {
                 posts:data
             }));
     }
+
     handleReload=()=>{
         fetch('api/getPosts')
             .then(res=>res.json())
@@ -23,12 +29,12 @@ class PostBoardDB extends React.Component {
                 posts:data
             }));
     }
-    handleChange = (event) => {
+    handleChange=(event)=>{
         this.setState({
             [event.target.name]: event.target.value
         });
     }
-    handleRemove=(id,p_id)=>{
+    handleRemove=(id, p_id)=>{
         if(this.props.id!==id){
             alert("작성자만 삭제할 수 있습니다.");
             return;
@@ -40,7 +46,7 @@ class PostBoardDB extends React.Component {
             }));
         alert("게시글이 삭제되었습니다.");
     }
-    btnDown = () => {
+    handleAdd=()=>{
         const {title,lore}=this.state;
         const {id}=this.props;
         if(this.state.title===''||this.state.lore===''){
@@ -55,7 +61,28 @@ class PostBoardDB extends React.Component {
                 lore:''
             }))
     }
+    handleToggle=()=>{
+        const {vFlg}=this.state;
+        if(vFlg){
+            this.setState({
+                vFlg:false,
+                style:{
+                    display:"none"
+                }
+            })
+        }
+        else{
+            this.setState({
+                vFlg:true,
+                style:{
+                    display:"block"
+                }
+            })
+        }
+    }
+
     render(){
+        const {title,lore,style}=this.state;
         const postList=this.state.posts.map(
             (post)=>(
                 <PostDB
@@ -74,17 +101,20 @@ class PostBoardDB extends React.Component {
         </div>);
         if(this.props.id!==''){
             addPost=(<div id='comp'>
-                <input type='text' value={this.state.title} name={'title'} onChange={this.handleChange} placeholder='제목'/>
+                <input type='text' value={title} name={'title'} onChange={this.handleChange} placeholder='제목'/>
                 <hr id='marginTop'/>
-                <textarea id='lore' value={this.state.lore} name={'lore'} onChange={this.handleChange} placeholder='내용'/>
-                <button id='marginTop' onClick={this.btnDown}>게시글 추가</button>
+                <textarea id='lore' value={lore} name={'lore'} onChange={this.handleChange} placeholder='내용'/>
+                <button id='marginTop' onClick={this.handleAdd}>게시글 추가</button>
             </div>);
         }
         return (
             <div id='postBoard'>
-                {postList}
-                <button id='reload' onClick={this.handleReload}>글 목록 새로고침</button>
-                {addPost}
+                <button onClick={this.handleToggle}>글 목록 ON/OFF</button>
+                <div style={style}>
+                    {postList}
+                    <button id='reload' onClick={this.handleReload}>글 목록 새로고침</button>
+                    {addPost}
+                </div>
             </div>
         )
     }

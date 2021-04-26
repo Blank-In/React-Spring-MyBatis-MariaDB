@@ -250,9 +250,12 @@ input{
     float: left;
     margin-right: 10px;
 }
-#postBoard>button{
+#postBoard button{
     margin: 10px auto 10px auto;
     width: 90%;
+}
+#postBoard{
+    margin-bottom: 60px;
 }
 #pop>#left{
     position: absolute;

@@ -137,4 +137,53 @@ router.get('/getNotices', function(req,res){
     });
 })
 
+router.get('/getBoard',function(req,res){
+    const sql=`select game from boards where b_id=${req.query.id}`;
+    console.log(sql);
+    connection.query(sql,function(err,rows){
+        if(!err){
+            res.send(rows);
+        }
+        else{
+            console.log(err);
+        }
+    });
+});
+
+router.get('/setBoard',function(req,res){
+    const sql=`insert into boards(b_id,game) values (${req.query.id},${req.query.board})`;
+    console.log(sql);
+    connection.query(sql,function(err,rows){
+        res.send(err);
+    });
+});
+
+router.get('/boardMatching',function(req,res){
+    let sql=`select * from boards where b_id='matching'`;
+    connection.query(sql,function(err,rows){
+        if(rows[0].turn===0){ //대기자가 없음 매칭을 기다려야함
+            sql=`update boards set game='${req.query.id}', turn=1 where b_id='matching'`;
+            connection.query(sql);
+            res.send(`{"matching":"false"}`);
+        }
+        else{ //대가지가 있음 게임을 시작하면 됨
+            sql=`update boards set game='${req.query.id}', turn=0 where b_id='matching'`;
+            connection.query(sql);
+            res.send(`{"matching":"${rows[0].game}"}`);
+        }
+    });
+})
+
+router.get('/findMatching',function(req,res){
+    const sql=`select * from boards where b_id='matching'`;
+    connection.query(sql,function(err,rows){
+        if(rows[0].turn===0){ //매칭이 잡혔음
+            res.send(`{"matching":"${rows[0].game}"}`);
+        }
+        else{
+            res.send(`{"matching":"false"}`);
+        }
+    })
+})
+
 module.exports=router;
