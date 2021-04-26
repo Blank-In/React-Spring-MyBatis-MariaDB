@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './compnent/Header';
-import SpringCon from "./spring/SpringCon";
+import springCon from "./spring/springCon";
 import './App.css'
 import reportWebVitals from './reportWebVitals';
 import {createStore} from "redux";
@@ -31,7 +31,7 @@ function tick(){
             <Gradient/>
             <BalloonBox />
             <Clock />
-            <SpringCon />
+            <springCon />
             <DataBase />
         </Provider>,
         document.getElementById('root')
