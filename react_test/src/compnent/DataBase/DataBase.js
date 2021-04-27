@@ -4,7 +4,7 @@ import PostBoardDB from "./posts/PostBoardDB";
 import VoteStatus from "./vote/VoteStatus";
 import ScoreBoard from "./scoreBoard/ScoreBoard";
 import React from "react";
-import Board from "./Board";
+import Board from "./boardGame/Board";
 
 class DataBase extends React.Component{
     render(){
