@@ -4,11 +4,13 @@ import Slot from "./Slot";
 
 class Board extends React.Component{
     status=0;
+    timer=null;
+
     constructor(props) {
         super(props);
         let tempSlot=[0,0,0,0,0,0,0,0,0,0];
         let tempBoard=[];
-        for(let a=0;a<10;++a){
+        for(let a=0;a<tempSlot.length;++a){
             tempBoard.push(tempSlot.slice());
         }
         this.state={
@@ -59,7 +61,7 @@ class Board extends React.Component{
     }
     matching=()=>{
         const {id}=this.props;
-        setInterval(this.tick,5000);
+        this.timer=setInterval(this.tick,5000);
         if(id===''){
             alert("로그인 후 이용할 수 있습니다");
         }
@@ -99,7 +101,7 @@ class Board extends React.Component{
     slotChange=(x,y)=>{
         let tempBoard=this.state.board.slice();
         const {b_turn,turn}=this.state;
-        if(b_turn!==turn){
+        if(b_turn!==turn&&tempBoard[x][y]===0){
             tempBoard[x][y]=turn;
             this.setState({
                 board:tempBoard,
@@ -121,7 +123,7 @@ class Board extends React.Component{
                             num={board[a][b]}
                             x={a}
                             y={b}
-                            key={a*5+b}
+                            key={a*board.length+b}
                             slotChange={this.slotChange}
                         />
                     )
@@ -140,6 +142,10 @@ class Board extends React.Component{
                 <h1>{this.state.enemy}</h1>
             </div>
         )
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timer);
     }
 }
 let mapStateToProps=(state)=>{

@@ -8,14 +8,19 @@ class Slot extends React.Component{
 
     render() {
         let status='';
-        if(this.props.num===1){
+        let style={
+            color:"black"
+        }
+        if(this.props.num>0){
             status='●'
         }
-        else if(this.props.num===2){
-            status='○'
+        if(this.props.num===2){
+            style={
+                color:"white"
+            }
         }
         return (
-            <button id='slot' onClick={this.onClick}>
+            <button id='slot' onClick={this.onClick} style={style}>
                 {status}
             </button>
         );
