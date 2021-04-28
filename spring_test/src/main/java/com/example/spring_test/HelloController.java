@@ -28,7 +28,7 @@ public class HelloController {
         value+=request.getRequestURI()+" | ";
         value+=request.getMethod();
         System.out.println(value);
-        try{
+        try{//spring 서버와 mariadb 데이터베이스 연동 (정상 작동 확인)
             Connection con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test_db","blank","");
             PreparedStatement ps= con.prepareStatement("select * from test_user");
             ResultSet rs= ps.executeQuery();
