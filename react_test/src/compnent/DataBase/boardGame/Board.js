@@ -23,7 +23,6 @@ class Board extends React.Component{
     }
 
     tick=()=>{
-        console.log(this.status);
         if(this.status===1){
             this.findMatching();
         }
@@ -38,11 +37,10 @@ class Board extends React.Component{
             .then(data=>this.checkMatching(data))
     }
     checkMatching(data){
-        if(data.matching==='false'){
+        if(data.matching==='false'){//상대방 발견 실패
             this.status=1;
         }
-        else{
-            console.log(data.matching+" find!");
+        else{//상대방 발견
             this.status=2;
             let b_id;
             if(data.turn===1){
@@ -61,19 +59,22 @@ class Board extends React.Component{
     }
     matching=()=>{
         const {id}=this.props;
-        this.timer=setInterval(this.tick,5000);
         if(id===''){
-            alert("로그인 후 이용할 수 있습니다");
+            alert('로그인 후 이용할 수 있습니다');
+        }
+        else if(this.state.enemy==='상대방 찾는중'){
+            alert('이미 상대를 찾는중입니다.');
         }
         else{
             fetch(`api/boardMatching?id=`+id)
                 .then(res=>res.json())
                 .then(data=>{
                     this.setState({
-                        enemy:"상대방 찾는중"
-                    })
+                        enemy:'상대방 찾는중'
+                    });
                     this.checkMatching(data);
                 });
+            this.timer=setInterval(this.tick,5000);
         }
     }
 
@@ -90,12 +91,10 @@ class Board extends React.Component{
         const {b_id,board,turn}=this.state;
         fetch(`api/setBoard?id='`+b_id+`'&board='`+JSON.stringify(board)+`'&turn=`+turn)
             .then(res=>res.json())
-            .then(data=>console.log(data));
     }
     boardReset=(b_id)=>{
         fetch(`api/resetBoard?id='`+b_id+`'&board='`+JSON.stringify(this.state.board)+`'`)
             .then(res=>res.json())
-            .then(data=>console.log(data));
     }
 
     slotChange=(x,y)=>{
