@@ -275,6 +275,6 @@ input{
     margin-bottom: 5px;
     margin-right: 5px;
 }
-#slot:nth-child(7n+2){
+#slot:nth-child(10n+1){
     float: none;
 }

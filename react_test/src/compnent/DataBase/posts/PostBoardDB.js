@@ -9,9 +9,9 @@ class PostBoardDB extends React.Component {
             posts:[],
             title:'',
             lore:'',
-            vFlg:true,
+            vFlg:false,
             style:{
-                display:"block"
+                display:"none"
             }
 
         }

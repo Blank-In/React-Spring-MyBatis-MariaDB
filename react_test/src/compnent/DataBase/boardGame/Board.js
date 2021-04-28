@@ -3,20 +3,30 @@ import {connect} from "react-redux";
 import Slot from "./Slot";
 
 class Board extends React.Component{
+    status=0;
     constructor(props) {
         super(props);
-        let tempSlot=[0,0,0,0,0,0,0];
+        let tempSlot=[0,0,0,0,0,0,0,0,0,0];
         let tempBoard=[];
-        for(let a=0;a<7;++a){
+        for(let a=0;a<10;++a){
             tempBoard.push(tempSlot.slice());
         }
-        console.log(tempBoard);
         this.state={
             enemy:'', //상대방
             board: tempBoard,
             turn:0, //자신의 턴 1or2
             b_id:'', //사용하는 보드의 프라이머리키
             b_turn: 2 //마지막으로 말을 놓은 플레이어
+        }
+    }
+
+    tick=()=>{
+        console.log(this.status);
+        if(this.status===1){
+            this.findMatching();
+        }
+        else if(this.status===2&&this.state.b_turn===this.state.turn){
+            this.boardGet();
         }
     }
 
@@ -27,11 +37,11 @@ class Board extends React.Component{
     }
     checkMatching(data){
         if(data.matching==='false'){
-            this.findMatching();
-            console.log('finding...');
+            this.status=1;
         }
         else{
             console.log(data.matching+" find!");
+            this.status=2;
             let b_id;
             if(data.turn===1){
                 b_id=this.props.id+"-"+data.matching;
@@ -49,6 +59,7 @@ class Board extends React.Component{
     }
     matching=()=>{
         const {id}=this.props;
+        setInterval(this.tick,5000);
         if(id===''){
             alert("로그인 후 이용할 수 있습니다");
         }
@@ -101,10 +112,11 @@ class Board extends React.Component{
     render(){
         if(this.state.enemy!==''&&this.state.enemy!=='상대방 찾는중'){
             const {board}=this.state;
-            let slots=[[],[],[],[],[],[],[]];
+            let slots=[];
             for(let a=0;a<board.length;++a){
+                slots.push([]);
                 for(let b=0;b<board[a].length;++b){
-                    slots[a][b]=(
+                    slots.push(
                         <Slot
                             num={board[a][b]}
                             x={a}
@@ -117,7 +129,6 @@ class Board extends React.Component{
             }
             return(
                 <div id='comp'>
-                    <button onClick={this.boardGet}>보드 새로고침</button>
                     <h1>상대 : {this.state.enemy}</h1>
                     {slots}
                 </div>
