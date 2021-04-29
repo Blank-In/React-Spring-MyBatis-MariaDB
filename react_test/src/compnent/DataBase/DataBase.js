@@ -5,6 +5,7 @@ import VoteStatus from "./vote/VoteStatus";
 import ScoreBoard from "./scoreBoard/ScoreBoard";
 import React from "react";
 import Board from "./boardGame/Board";
+import MultiCanvas from "./MultiCanvas";
 
 class DataBase extends React.Component {
     render() {
@@ -15,6 +16,7 @@ class DataBase extends React.Component {
             <VoteStatus/>
             <ScoreBoard/>
             <Board/>
+            <MultiCanvas/>
         </div>)
     };
 }

@@ -226,9 +226,7 @@ router.get('/boardMatching', function (req, res) {
 })
 
 router.get('/findMatching', function (req, res) {
-    const sql = `select *
-                 from boards
-                 where b_id = 'matching'`;
+    const sql = `SELECT * FROM boards WHERE b_id = 'matching'`;
     console.log(sql);
     connection.query(sql, function (err, rows) {
         if (rows[0].turn === 0) { //매칭이 잡혔음
@@ -237,6 +235,28 @@ router.get('/findMatching', function (req, res) {
             res.send(`{"matching":"false"}`);
         }
     })
+})
+
+router.get('/getCanvas', function (req, res) {
+    const sql = `SELECT * FROM canvas WHERE id > ${req.query.data} ORDER BY id`
+    console.log(sql);
+    connection.query(sql, function (err, rows) {
+        if (!err) {
+            res.send(rows);
+        } else {
+            res.send(err);
+        }
+    });
+});
+
+router.get('/addCanvas', function (req, res) {
+    const sql = `INSERT INTO canvas VALUE((SELECT ifnull(MAX(c2.id),0) FROM canvas c2)+1,${req.query.f_x},${req.query.f_y},${req.query.l_x},${req.query.l_y},${req.query.color})`
+    console.log(sql);
+    connection.query(sql, function (err, rows) {
+        if (err) {
+            res.send(err);
+        }
+    });
 })
 
 module.exports = router;

@@ -335,3 +335,19 @@ input {
 #slot:nth-child(10n+1) {
     float: none;
 }
+
+canvas {
+    background: white;
+    float: left;
+}
+
+#slide {
+    -webkit-appearance: slider-vertical;
+    float: left;
+    width: 30px;
+    height: 360px;
+}
+
+#slide:last-child {
+    float: none;
+}
