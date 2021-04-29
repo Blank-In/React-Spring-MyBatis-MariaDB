@@ -6,8 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import {createStore} from "redux";
 import counterApp from "./redux/reducers";
 import {Provider} from "react-redux";
-import PopNotice from "./compnent/DataBase/PopNotice";
-import DataBase from "./compnent/DataBase/DataBase";
 import SpringCon from "./spring/SpringCon";
 
 const store = createStore(counterApp);
@@ -19,17 +17,16 @@ function tick() {
     ReactDOM.render(
         <Provider store={store}>
             <Header/>
-            <PopNotice/>
-            {/*
+                {/*
             <PostBoard />
             <Input />
             <Temp />
             <Gradient/>
             <BalloonBox />
             <Clock />
+            <DataBase/>
                 */}
             <SpringCon/>
-            <DataBase/>
         </Provider>,
         document.getElementById('root')
     );

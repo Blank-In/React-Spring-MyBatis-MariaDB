@@ -6,6 +6,8 @@ import ScoreBoard from "./scoreBoard/ScoreBoard";
 import React from "react";
 import Board from "./boardGame/Board";
 import MultiCanvas from "./MultiCanvas";
+import PopNotice from "./PopNotice";
+import {Provider} from "react-redux";
 
 class DataBase extends React.Component {
     render() {
@@ -17,6 +19,7 @@ class DataBase extends React.Component {
             <ScoreBoard/>
             <Board/>
             <MultiCanvas/>
+            <PopNotice/>
         </div>)
     };
 }
