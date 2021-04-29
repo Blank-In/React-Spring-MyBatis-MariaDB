@@ -1,25 +1,27 @@
 import React from "react";
 
-class Score extends React.Component{
+class Score extends React.Component {
     constructor(props) {
         super(props);
-        this.state={
-            select:5
+        this.state = {
+            select: 5
         }
     }
+
     handleChange = (event) => {
         this.setState({
             select: event.target.value,
         });
     }
-    handleClick=()=>{
-        const {onClick,id}=this.props;
-        const {select}=this.state;
-        onClick(id,select);
+    handleClick = () => {
+        const {onClick, id} = this.props;
+        const {select} = this.state;
+        onClick(id, select);
     }
-    render(){
-        const {score,cnt,lore}=this.props;
-        return(
+
+    render() {
+        const {score, cnt, lore} = this.props;
+        return (
             <div id='score'>
                 <h3>{lore}</h3>
                 <hr/>

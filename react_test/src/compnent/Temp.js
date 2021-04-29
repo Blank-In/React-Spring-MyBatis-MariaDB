@@ -1,39 +1,41 @@
 import React from "react";
 
-class Temp extends React.Component{
+class Temp extends React.Component {
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             c: 0,
             f: 32,
             k: 273.15
         }
     }
+
     cChange = (event) => {
         this.setState({
-            c:event.target.value,
-            f:(event.target.value*9/5+32).toFixed(2),
-            k:(event.target.value/1+273.15).toFixed(2)
+            c: event.target.value,
+            f: (event.target.value * 9 / 5 + 32).toFixed(2),
+            k: (event.target.value / 1 + 273.15).toFixed(2)
         });
     }
     fChange = (event) => {
         this.setState({
-            f:event.target.value,
-            c:((event.target.value-32)*5/9).toFixed(2),
-            k:((event.target.value/1+459.67)*5/9).toFixed(2)
+            f: event.target.value,
+            c: ((event.target.value - 32) * 5 / 9).toFixed(2),
+            k: ((event.target.value / 1 + 459.67) * 5 / 9).toFixed(2)
         });
     }
     kChange = (event) => {
         this.setState({
             k: event.target.value,
-            c: (event.target.value-273.15).toFixed(2),
-            f: (event.target.value*9/5-459.67).toFixed(2)
+            c: (event.target.value - 273.15).toFixed(2),
+            f: (event.target.value * 9 / 5 - 459.67).toFixed(2)
         });
     }
+
     render() {
-        const c=this.state.c;
-        const f=this.state.f;
-        const k=this.state.k;
+        const c = this.state.c;
+        const f = this.state.f;
+        const k = this.state.k;
         return (
             <form id='temp'>
                 <h4>섭씨 </h4>
@@ -51,4 +53,5 @@ class Temp extends React.Component{
         )
     }
 }
+
 export default Temp;

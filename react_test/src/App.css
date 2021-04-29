@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -6,10 +6,12 @@
     display: block;
     list-style: none;
 }
-title, style{
+
+title, style {
     display: none;
 }
-#title{
+
+#title {
     color: white;
     width: 50%;
     text-align: center;
@@ -17,29 +19,34 @@ title, style{
     border-radius: 3px 3px 0 0;
     margin: 0 auto 40px auto;
 }
-#time{
+
+#time {
     background: gray;
     color: white;
     text-align: center;
     width: 50%;
     box-shadow: 0 3px 6px gray;
     border-radius: 0 0 3px 3px;
-    margin:0 auto 10px auto;
+    margin: 0 auto 10px auto;
 }
-button{
+
+button {
     border: 0;
     background: lightgray;
     width: 150px;
     height: 30px;
     box-shadow: 0 1px 3px darkgray;
 }
-button:hover{
+
+button:hover {
     cursor: pointer;
 }
-button:active{
-    background:darkgray;
+
+button:active {
+    background: darkgray;
 }
-#comp, #post, #temp, #balloonBox, #postAdd, #score, #scoreBoard{
+
+#comp, #post, #temp, #balloonBox, #postAdd, #score, #scoreBoard {
     margin: 5px auto;
     padding: 10px;
     width: 90%;
@@ -47,17 +54,21 @@ button:active{
     box-shadow: 0 3px 6px darkgray;
     border-radius: 3px;
 }
-#comp, #temp, #balloonBox,#postAdd,#scoreBoard{
+
+#comp, #temp, #balloonBox, #postAdd, #scoreBoard {
     margin-bottom: 60px;
 }
-hr{
+
+hr {
     margin: 5px 0;
 }
-#root{
+
+#root {
     padding: 10px;
-    background: linear-gradient(mistyrose,azure);
+    background: linear-gradient(mistyrose, azure);
 }
-ul{
+
+ul {
     width: 80%;
     height: 50px;
     background: white;
@@ -65,65 +76,79 @@ ul{
     border-radius: 3px;
     margin: 0 auto 40px auto;
 }
-li{
+
+li {
     float: left;
     margin-left: 40px;
 }
-#temp>h4{
+
+#temp > h4 {
     float: left;
 }
-#temp>input{
+
+#temp > input {
     margin: 3px 10px 0 10px;
     float: left;
 }
-#marginTop{
+
+#marginTop {
     margin-top: 5px;
 }
-#marginBottom{
+
+#marginBottom {
     margin-bottom: 5px;
 }
-#postAdd>input{
+
+#postAdd > input {
     width: 100%;
 }
-#postAdd>input:first-child{
+
+#postAdd > input:first-child {
     font-size: 25px;
 }
-#colorBox{
+
+#colorBox {
     width: 40px;
     height: 100px;
     float: left;
     margin: 0 5px;
 }
-#color{
+
+#color {
     width: 40px;
     height: 40px;
     box-shadow: 0 0 3px dimgray;
     margin-bottom: 5px;
 }
-#colorBox>input{
+
+#colorBox > input {
     -webkit-appearance: slider-vertical;
     width: 33%;
     height: 60px;
     float: left;
     cursor: pointer;
 }
-#add{
+
+#add {
     width: 50px;
     height: 100px;
     margin-bottom: 5px;
     padding: 0 20px;
 }
-#del{
+
+#del {
     width: 100%;
     height: 40px;
 }
-#balloonBox{
+
+#balloonBox {
     height: 130px;
     width: 90%;
     position: relative;
     overflow: hidden;
 }
-#balloon{
+
+#balloon {
     width: 100px;
     height: 100px;
     margin: 5px;
@@ -133,10 +158,12 @@ li{
     border-radius: 10%;
     position: absolute;
 }
-#balloon>h3{
+
+#balloon > h3 {
     margin-top: 25%;
 }
-#pop{
+
+#pop {
     position: fixed;
     right: 5%;
     width: 90%;
@@ -147,15 +174,18 @@ li{
     z-index: 100;
     padding: 0 20px;
 }
-.popUp{
+
+.popUp {
     transition: bottom .3s ease;
     bottom: -5%;
 }
-.popDown{
+
+.popDown {
     transition: bottom .3s ease;
     bottom: -70%;
 }
-#pop>div{
+
+#pop > div {
     width: 100%;
     border-radius: 10px;
     height: 7%;
@@ -164,7 +194,8 @@ li{
     color: lightgray;
     cursor: pointer;
 }
-#alarm{
+
+#alarm {
     width: 90%;
     height: 50px;
     box-shadow: 0 3px 6px darkgray;
@@ -172,65 +203,79 @@ li{
     position: relative;
     overflow: hidden;
 }
-#alarmTime{
+
+#alarmTime {
     float: left;
     margin: 0 20px;
     line-height: 50px;
 }
-#alarm>button{
+
+#alarm > button {
     height: 30px;
     margin-top: 10px;
     position: absolute;
     right: 10px;
     width: 70px;
 }
-#newTime{
+
+#newTime {
     width: 50px;
     margin-left: 25px;
     margin-top: 5px;
     font-size: 32px;
 }
-#alarm>h1,#alarm>input,#alarm>p{
+
+#alarm > h1, #alarm > input, #alarm > p {
     float: left;
 }
-#loreAdd,#alarm>p{
+
+#loreAdd, #alarm > p {
     margin-top: 15px;
     width: 100px;
 }
-#lore{
+
+#lore {
     margin-top: 5px;
     width: 100%;
 }
-#vote{
+
+#vote {
     height: 40px;
     box-shadow: 0 0 3px darkgray;
     margin-bottom: 10px;
     transition: width 0.5s ease;
     border-radius: 3px;
 }
-#vote:hover{
+
+#vote:hover {
     border: 1px solid black;
 }
-input{
+
+input {
     margin-bottom: 5px;
 }
-#scoreBoard{
+
+#scoreBoard {
     height: 200px;
 }
-#score{
+
+#score {
     width: 45%;
     float: left;
     margin: auto 2.5%;
 }
-#score>h4{
+
+#score > h4 {
     float: left;
     margin-right: 5px;
     line-height: 20px;
 }
-#score>h5{
+
+#score > h5 {
     line-height: 20px;
 }
-#score>select{
+
+#score > select {
     font-size: 20px;
     float: left;
     height: 25px;
@@ -238,36 +283,44 @@ input{
     border: none;
     box-shadow: -1px 1px 2px darkgray;
 }
-#score>select:focus{
+
+#score > select:focus {
     outline: none;
 }
-#score>button{
+
+#score > button {
     text-align: left;
     height: 25px;
     box-shadow: -1px 1px 2px darkgray;
 }
-#fLeft{
+
+#fLeft {
     float: left;
     margin-right: 10px;
 }
-#postBoard button{
+
+#postBoard button {
     margin: 10px auto 10px auto;
     width: 90%;
 }
-#postBoard{
+
+#postBoard {
     margin-bottom: 60px;
 }
-#pop>#left{
+
+#pop > #left {
     position: absolute;
     bottom: 10%;
     left: 5%;
 }
-#pop>#right{
+
+#pop > #right {
     position: absolute;
     bottom: 10%;
     right: 5%;
 }
-#slot{
+
+#slot {
     float: left;
     background: darkgray;
     width: 40px;
@@ -278,6 +331,7 @@ input{
     margin-bottom: 1px;
     margin-right: 1px;
 }
-#slot:nth-child(10n+1){
+
+#slot:nth-child(10n+1) {
     float: none;
 }

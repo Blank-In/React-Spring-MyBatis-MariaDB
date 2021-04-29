@@ -1,9 +1,9 @@
 import React from "react";
 
-class Input extends React.Component{
+class Input extends React.Component {
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             name: '',
             age: 0
         }
@@ -15,10 +15,11 @@ class Input extends React.Component{
             [event.target.age]: event.target.value
         });
     }
-    render(){
+
+    render() {
         const {name} = this.state;
-        const {age}=this.state;
-        return(
+        const {age} = this.state;
+        return (
             <div id='comp'>
                 <form onSubmit={this.handleChange}>
                     <input type='text' name={'name'} value={name} onChange={this.handleChange}/>
@@ -32,4 +33,5 @@ class Input extends React.Component{
         );
     }
 }
+
 export default Input;

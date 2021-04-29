@@ -11,15 +11,16 @@ import DataBase from "./compnent/DataBase/DataBase";
 import SpringCon from "./spring/SpringCon";
 
 const store = createStore(counterApp);
+
 /*
 ngrok http -host-header="localhost:3000" 3000
  */
-function tick(){
+function tick() {
     ReactDOM.render(
         <Provider store={store}>
-            <Header />
-            <PopNotice />
-                {/*
+            <Header/>
+            <PopNotice/>
+            {/*
             <PostBoard />
             <Input />
             <Temp />
@@ -27,11 +28,12 @@ function tick(){
             <BalloonBox />
             <Clock />
                 */}
-            <SpringCon />
-            <DataBase />
+            <SpringCon/>
+            <DataBase/>
         </Provider>,
         document.getElementById('root')
     );
 }
+
 tick();
 reportWebVitals();

@@ -1,11 +1,13 @@
 import React from "react";
-class Alarm extends React.Component{
-    handleRemove=()=>{
-        const {alarm,onRemove}=this.props;
+
+class Alarm extends React.Component {
+    handleRemove = () => {
+        const {alarm, onRemove} = this.props;
         onRemove(alarm.id);
     }
+
     render() {
-        const {hour,minute,lore}=this.props;
+        const {hour, minute, lore} = this.props;
         return (
             <div id='alarm'>
                 <h1 id='alarmTime'>{hour}시</h1>
@@ -16,4 +18,5 @@ class Alarm extends React.Component{
         );
     }
 }
+
 export default Alarm;

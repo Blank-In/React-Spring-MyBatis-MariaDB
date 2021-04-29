@@ -3,52 +3,54 @@ import Alarm from "./Alarm";
 import {connect} from 'react-redux';
 import {setValue} from "../../redux/actions";
 
-class Clock extends React.Component{
-    id=2;
+class Clock extends React.Component {
+    id = 2;
+
     constructor(props) {
         super(props);
-        this.state={
-            alarms:[
-                {id:0,hour:18,minute:55,lore:'5분전'},
-                {id:1,hour:19,minute:0,lore:'7시'}
+        this.state = {
+            alarms: [
+                {id: 0, hour: 18, minute: 55, lore: '5분전'},
+                {id: 1, hour: 19, minute: 0, lore: '7시'}
             ],
             hour: 0,
             minute: 0,
             lore: '',
             time: new Date().toLocaleTimeString()
         }
-        setInterval(this.tick,1000);
+        setInterval(this.tick, 1000);
     }
-    tick=()=>{
-        const {alarms}=this.state;
+
+    tick = () => {
+        const {alarms} = this.state;
         this.setState({
-            time:new Date().toLocaleTimeString()
+            time: new Date().toLocaleTimeString()
         })
-        for(let index=0;index<alarms.length;++index){
-            const alarm=alarms[index];
-            if(alarm.hour===new Date().getHours()&&alarm.minute.valueOf()===new Date().getMinutes()){
+        for (let index = 0; index < alarms.length; ++index) {
+            const alarm = alarms[index];
+            if (alarm.hour === new Date().getHours() && alarm.minute.valueOf() === new Date().getMinutes()) {
                 this.props.onSetValue(5);
                 this.handleRemove(alarm.id);
                 return;
             }
         }
     }
-    hChange=(event)=>{
+    hChange = (event) => {
         this.setState({
-            hour:event.target.value
+            hour: event.target.value
         })
     }
-    mChange=(event)=>{
+    mChange = (event) => {
         this.setState({
-            minute:event.target.value
+            minute: event.target.value
         })
     }
-    lChange=(event)=>{
+    lChange = (event) => {
         this.setState({
-            lore:event.target.value
+            lore: event.target.value
         })
     }
-    handleCreate=()=>{
+    handleCreate = () => {
         this.setState({
             alarms: this.state.alarms.concat({
                 id: this.id++,
@@ -61,16 +63,17 @@ class Clock extends React.Component{
             lore: ''
         });
     }
-    handleRemove=(id)=>{
-        const {alarms}=this.state;
+    handleRemove = (id) => {
+        const {alarms} = this.state;
         this.setState({
-            alarms:alarms.filter(alarm=>alarm.id!==id)
+            alarms: alarms.filter(alarm => alarm.id !== id)
         });
     }
+
     render() {
-        const {alarms,time}=this.state;
-        const alarmList=alarms.map(
-            alarm=>(
+        const {alarms, time} = this.state;
+        const alarmList = alarms.map(
+            alarm => (
                 <Alarm
                     hour={alarm.hour}
                     minute={alarm.minute}
@@ -98,17 +101,17 @@ class Clock extends React.Component{
     }
 }
 
-let mapDispatchToProps=(dispatch)=>{
+let mapDispatchToProps = (dispatch) => {
     return {
-        onSetValue: (value)=>dispatch(setValue(value))
+        onSetValue: (value) => dispatch(setValue(value))
     }
 }
 
-let mapStateToProps=(state)=>{
-    return{
-        value:state.counter.value
+let mapStateToProps = (state) => {
+    return {
+        value: state.counter.value
     };
 }
 
-Clock=connect(mapStateToProps,mapDispatchToProps)(Clock);
+Clock = connect(mapStateToProps, mapDispatchToProps)(Clock);
 export default Clock;
