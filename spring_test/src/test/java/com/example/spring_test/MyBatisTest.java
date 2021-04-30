@@ -16,16 +16,16 @@ public class MyBatisTest {
     private SqlSessionFactory sqlSessionFactory;
 
     @Test
-    public void testFactory(){
+    public void testFactory() {
         System.out.println(sqlSessionFactory);
     }
 
     @Test
-    public void testSession() throws Exception{
-        try{
+    public void testSession() throws Exception {
+        try {
             SqlSession sqlSession = sqlSessionFactory.openSession();
             System.out.println(sqlSession);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

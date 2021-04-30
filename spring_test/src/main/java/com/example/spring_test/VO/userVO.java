@@ -8,6 +8,7 @@ public class userVO {
     public String getId() {
         return id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
@@ -15,6 +16,7 @@ public class userVO {
     public String getPw() {
         return pw;
     }
+
     public void setPw(String pw) {
         this.pw = pw;
     }
@@ -22,6 +24,7 @@ public class userVO {
     public String getLore() {
         return lore;
     }
+
     public void setLore(String lore) {
         this.lore = lore;
     }

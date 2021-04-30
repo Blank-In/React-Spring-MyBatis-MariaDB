@@ -10,20 +10,20 @@ import java.io.Reader;
 
 public class SqlSessionFactoryBean {
 
-    private static SqlSessionFactory sessionFactory=null;
+    private static SqlSessionFactory sessionFactory = null;
 
-    static{
-        try{
-            if(sessionFactory==null){
-                Reader reader= Resources.getResourceAsReader("myBatis/mybatis-config.xml");
-                sessionFactory=new SqlSessionFactoryBuilder().build(reader);
+    static {
+        try {
+            if (sessionFactory == null) {
+                Reader reader = Resources.getResourceAsReader("myBatis/mybatis-config.xml");
+                sessionFactory = new SqlSessionFactoryBuilder().build(reader);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static SqlSession getSqlSessionInstance(){
+    public static SqlSession getSqlSessionInstance() {
         return sessionFactory.openSession();
     }
 }

@@ -20,13 +20,12 @@ import java.util.List;
 public class HelloController {
 
 
-
     @PostMapping("/test")
-    public String test(HttpServletRequest request){
-        String value="";
-        value+=request.getRemoteAddr()+" | ";
-        value+=request.getRequestURI()+" | ";
-        value+=request.getMethod();
+    public String test(HttpServletRequest request) {
+        String value = "";
+        value += request.getRemoteAddr() + " | ";
+        value += request.getRequestURI() + " | ";
+        value += request.getMethod();
         System.out.println(value);
         /*
         try{
@@ -38,14 +37,13 @@ public class HelloController {
             e.printStackTrace();
         }
         */
-        try{
+        try {
             SqlSession sqlSession = SqlSessionFactoryBean.getSqlSessionInstance();
-            List<userVO> list=sqlSession.selectList("UserDAO.allUser");
-            for(userVO user:list){
+            List<userVO> list = sqlSession.selectList("UserDAO.allUser");
+            for (userVO user : list) {
                 System.out.println(user.getId());
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return value;

@@ -17,11 +17,11 @@ public class DataSourceTest {
     private DataSource ds;
 
     @Test
-    public void testConnection() throws Exception{
-        try{
-            Connection con=ds.getConnection();
+    public void testConnection() throws Exception {
+        try {
+            Connection con = ds.getConnection();
             System.out.println(con);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
