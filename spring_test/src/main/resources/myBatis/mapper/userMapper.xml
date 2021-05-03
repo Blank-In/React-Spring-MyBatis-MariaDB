@@ -8,10 +8,6 @@
         <result property="lore" column="LORE"/>
     </resultMap>
 
-    <select id="allUser" resultType="user">
-        SELECT *
-        FROM test_user
-    </select>
     <select id="loginUser" resultType="user">
         SELECT *
         FROM test_user

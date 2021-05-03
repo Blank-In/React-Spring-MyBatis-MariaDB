@@ -2,6 +2,7 @@ import React from "react";
 import SpringCon from "./SpringCon";
 import Login from "./account/Login";
 import Register from "./account/Register";
+import PostBoardDB from "./posts/PostBoardDB";
 
 class SpringComponent extends React.Component {
     render() {
@@ -10,6 +11,7 @@ class SpringComponent extends React.Component {
                 <SpringCon/>
                 <Login/>
                 <Register/>
+                <PostBoardDB/>
             </div>
         );
     }

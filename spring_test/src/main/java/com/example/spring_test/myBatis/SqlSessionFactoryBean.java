@@ -11,6 +11,7 @@ import java.io.Reader;
 public class SqlSessionFactoryBean {
 
     private static SqlSessionFactory sessionFactory = null;
+    private static SqlSession sqlSession = null;
 
     static {
         try {
@@ -24,6 +25,9 @@ public class SqlSessionFactoryBean {
     }
 
     public static SqlSession getSqlSessionInstance() {
-        return sessionFactory.openSession();
+        if (sqlSession == null) {
+            sqlSession = sessionFactory.openSession();
+        }
+        return sqlSession;
     }
 }

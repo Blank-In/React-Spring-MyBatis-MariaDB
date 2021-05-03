@@ -6,6 +6,7 @@
     <!-- Alias 설정 -->
     <typeAliases>
         <typeAlias alias="user" type="com.example.spring_test.VO.UserVO"/>
+        <typeAlias alias="post" type="com.example.spring_test.VO.PostVO"/>
     </typeAliases>
 
     <!-- DataSource 설정 -->
@@ -22,6 +23,8 @@
 
     <!-- SQL Mapper 설정 -->
     <mappers>
-        <mapper resource="myBatis/userMapper.xml"/>
+        <mapper resource="myBatis/mapper/userMapper.xml"/>
+        <mapper resource="myBatis/mapper/postMapper.xml"/>
     </mappers>
+
 </configuration>
