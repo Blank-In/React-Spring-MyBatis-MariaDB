@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="VoteDAO">
+
+    <resultMap id="voteResult" type="vote">
+        <id property="id" column="ID"/>
+        <result property="vote" column="VOTE"/>
+    </resultMap>
+
+    <select id="getVotes" resultType="vote">
+        SELECT num                                                           vote
+             , v_name                                                        id
+             , (SELECT COUNT(*) FROM user_vote WHERE vote = num)             cnt
+             , if(num = (SELECT vote FROM user_vote WHERE id = #{id}), 1, 0) flg
+        FROM vote_data
+    </select>
+    <delete id="delVote">
+        DELETE
+        FROM user_vote
+        WHERE id = #{id}
+    </delete>
+    <insert id="addVote">
+        INSERT INTO user_vote
+        VALUES (#{id}, #{vote})
+    </insert>
+
+</mapper>
