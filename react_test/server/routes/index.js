@@ -226,7 +226,9 @@ router.get('/boardMatching', function (req, res) {
 })
 
 router.get('/findMatching', function (req, res) {
-    const sql = `SELECT * FROM boards WHERE b_id = 'matching'`;
+    const sql = `SELECT *
+                 FROM boards
+                 WHERE b_id = 'matching'`;
     console.log(sql);
     connection.query(sql, function (err, rows) {
         if (rows[0].turn === 0) { //매칭이 잡혔음
@@ -238,7 +240,10 @@ router.get('/findMatching', function (req, res) {
 })
 
 router.get('/getCanvas', function (req, res) {
-    const sql = `SELECT * FROM canvas WHERE id > ${req.query.data} ORDER BY id`
+    const sql = `SELECT *
+                 FROM canvas
+                 WHERE id > ${req.query.data}
+                 ORDER BY id`
     console.log(sql);
     connection.query(sql, function (err, rows) {
         if (!err) {

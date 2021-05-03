@@ -5,7 +5,7 @@
 
     <!-- Alias 설정 -->
     <typeAliases>
-        <typeAlias alias="user" type="com.example.spring_test.VO.userVO"/>
+        <typeAlias alias="user" type="com.example.spring_test.VO.UserVO"/>
     </typeAliases>
 
     <!-- DataSource 설정 -->

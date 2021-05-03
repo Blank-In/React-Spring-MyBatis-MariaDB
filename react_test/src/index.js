@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './compnent/Header';
+import Header from './component/Header';
 import './App.css'
 import reportWebVitals from './reportWebVitals';
 import {createStore} from "redux";
 import counterApp from "./redux/reducers";
 import {Provider} from "react-redux";
-import SpringCon from "./spring/SpringCon";
+import SpringComponent from "./component/spring/SpringComponent";
 
 const store = createStore(counterApp);
 
@@ -26,7 +26,7 @@ function tick() {
             <Clock />
             <DataBase/>
                 */}
-            <SpringCon/>
+            <SpringComponent/>
         </Provider>,
         document.getElementById('root')
     );

@@ -1,17 +1,15 @@
 package com.example.spring_test;
 
-import com.example.spring_test.myBatis.SqlSessionFactoryBean;
-import com.example.spring_test.VO.userVO;
-import org.apache.ibatis.session.SqlSession;
+import com.example.spring_test.VO.UserDAO;
+import com.example.spring_test.VO.UserVO;
+import org.apache.ibatis.annotations.Param;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import java.util.Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:/web/WEB-INF/applicationContext.xml"})
@@ -19,6 +17,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class HelloController {
 
+    UserDAO userDAO = new UserDAO();
 
     @PostMapping("/test")
     public String test(HttpServletRequest request) {
@@ -27,25 +26,34 @@ public class HelloController {
         value += request.getRequestURI() + " | ";
         value += request.getMethod();
         System.out.println(value);
-        /*
-        try{
-            Connection con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test_db","blank","");
-            PreparedStatement ps= con.prepareStatement("select * from test_user");
-            ResultSet rs= ps.executeQuery();
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-        */
-        try {
-            SqlSession sqlSession = SqlSessionFactoryBean.getSqlSessionInstance();
-            List<userVO> list = sqlSession.selectList("UserDAO.allUser");
-            for (userVO user : list) {
-                System.out.println(user.getId());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         return value;
+    }
+
+    @PostMapping("/login")
+    public String Login(@RequestBody Map<String, String> req) {
+        UserVO userVO = new UserVO();
+        userVO.setId(req.get("id"));
+        userVO.setPw(req.get("pw"));
+        userVO = userDAO.loginUser(userVO);
+        if (userVO == null) {
+            return "{\"flg\":false, \"lore\":\"아이디 또는 비밀번호가 틀렸습니다.\"}";
+        }
+        else {
+            return "{\"flg\":true, \"lore\":\"" + userVO.getLore() + "\"}";
+        }
+    }
+
+    @PostMapping("/register")
+    public String Register(@RequestBody Map<String, String> req) {
+        UserVO userVO = new UserVO();
+        userVO.setId(req.get("id"));
+        userVO.setPw(req.get("pw"));
+        userVO.setLore(req.get("lore"));
+        try {
+            userDAO.registerUser(userVO);
+        } catch (Exception e) {
+            return "{\"flg\":false, \"status\":\"이미 존재하는 아이디입니다.\"}";
+        }
+        return "{\"flg\":true, \"status\":\"회원가입이 완료되었습니다.\"}";
     }
 }

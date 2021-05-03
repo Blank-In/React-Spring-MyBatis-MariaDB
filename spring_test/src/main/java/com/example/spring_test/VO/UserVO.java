@@ -1,6 +1,6 @@
 package com.example.spring_test.VO;
 
-public class userVO {
+public class UserVO {
     private String id;
     private String pw;
     private String lore;

@@ -35,6 +35,7 @@ class Board extends React.Component {
             .then(res => res.json())
             .then(data => this.checkMatching(data));
     }
+
     checkMatching(data) {
         if (data.matching === 'false') {//상대방 발견 실패
             this.status = 1;
@@ -54,6 +55,7 @@ class Board extends React.Component {
             });
         }
     }
+
     matching = () => {
         const {id} = this.props;
         if (id === '') {
