@@ -3,25 +3,27 @@
 <mapper namespace="VoteDAO">
 
     <resultMap id="voteResult" type="vote">
-        <id property="id" column="ID"/>
-        <result property="vote" column="VOTE"/>
+        <result property="v_name" column="V_NAME"/>
+        <result property="num" column="NUM"/>
+        <result property="cnt" column="CNT"/>
+        <result property="flg" column="FLG"/>
     </resultMap>
 
     <select id="getVotes" resultType="vote">
-        SELECT num                                                           vote
-             , v_name                                                        id
-             , (SELECT COUNT(*) FROM user_vote WHERE vote = num)             cnt
-             , if(num = (SELECT vote FROM user_vote WHERE id = #{id}), 1, 0) flg
+        SELECT v_name
+             , num
+             , (SELECT COUNT(*) FROM user_vote WHERE vote = num)                            cnt
+             , IF(num = NULLIF((SELECT vote FROM user_vote WHERE id = #{v_name}), 0), 1, 0) flg
         FROM vote_data
     </select>
     <delete id="delVote">
         DELETE
         FROM user_vote
-        WHERE id = #{id}
+        WHERE id = #{v_name}
     </delete>
     <insert id="addVote">
-        INSERT INTO user_vote
-        VALUES (#{id}, #{vote})
+        INSERT INTO user_vote(id, vote)
+        VALUES (#{v_name}, #{num})
     </insert>
 
 </mapper>

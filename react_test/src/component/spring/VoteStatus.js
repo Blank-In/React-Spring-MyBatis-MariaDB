@@ -16,23 +16,34 @@ class VoteStatus extends React.Component {
         this.state = {
             votes: []
         }
-        this.onReload(this.props.id);
+        this.onReload();
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
         if (this.props.id !== nextProps.id) {
-            //this.onReload(nextProps.id);
+            const request = {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    id: nextProps.id
+                })
+            }
+            fetch('http://192.168.1.221:8080/api/getVotes', request)
+                .then(res => res.json())
+                .then(data => this.setState({
+                    votes: data
+                }));
             return false;
         }
         return true;
     }
 
-    onReload = (id) => {
+    onReload = () => {
         const request = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                id: id,
+                id: this.props.id
             })
         }
         fetch('http://192.168.1.221:8080/api/getVotes', request)
@@ -101,7 +112,7 @@ class VoteStatus extends React.Component {
         );
         return (<div id='comp'>
             <h2 id='fLeft'>제77대 대통령 선거</h2>
-            <button id='reload' onClick={this.onReload(this.props.id)}>투표 현황 새로고침</button>
+            <button id='reload' onClick={this.onReload}>투표 현황 새로고침</button>
             <hr/>
             {voteList}
             <button onClick={this.onBlank}>기권</button>

@@ -1,9 +1,11 @@
 package com.example.spring_test;
 
 import com.example.spring_test.DAO.PostDAO;
+import com.example.spring_test.DAO.ScoreDAO;
 import com.example.spring_test.DAO.UserDAO;
 import com.example.spring_test.DAO.VoteDAO;
 import com.example.spring_test.VO.PostVO;
+import com.example.spring_test.VO.ScoreVO;
 import com.example.spring_test.VO.UserVO;
 import com.example.spring_test.VO.VoteVO;
 import org.junit.runner.RunWith;
@@ -24,6 +26,7 @@ public class HelloController {
     UserDAO userDAO = new UserDAO();
     PostDAO postDAO = new PostDAO();
     VoteDAO voteDAO = new VoteDAO();
+    ScoreDAO scoreDAO = new ScoreDAO();
 
     @PostMapping("/test")
     public String test(HttpServletRequest request) {
@@ -64,13 +67,13 @@ public class HelloController {
     }
 
     @PostMapping("/getPosts")
-    public List<PostVO> GetPosts(){
+    public List<PostVO> GetPosts() {
         return postDAO.getPosts();
     }
 
     @PostMapping("/addPost")
-    public List<PostVO> AddPost(@RequestBody Map<String, String> req){
-        PostVO postVO=new PostVO();
+    public List<PostVO> AddPost(@RequestBody Map<String, String> req) {
+        PostVO postVO = new PostVO();
         postVO.setTitle(req.get("title"));
         postVO.setLore(req.get("lore"));
         postVO.setId(req.get("id"));
@@ -79,37 +82,50 @@ public class HelloController {
     }
 
     @PostMapping("/delPost")
-    public List<PostVO> DelPost(@RequestBody Map<String, Integer> req){
-        PostVO postVO=new PostVO();
+    public List<PostVO> DelPost(@RequestBody Map<String, Integer> req) {
+        PostVO postVO = new PostVO();
         postVO.setP_id(req.get("p_id"));
         postDAO.delPost(postVO);
         return postDAO.getPosts();
     }
 
     @PostMapping("/getVotes")
-    public List<VoteVO> GetVote(@RequestBody Map<String, String> req){
-        VoteVO voteVO=new VoteVO();
-        voteVO.setId(req.get("id"));
+    public List<VoteVO> GetVote(@RequestBody Map<String, String> req) {
+        VoteVO voteVO = new VoteVO();
+        voteVO.setV_name(req.get("id"));
         return voteDAO.getVotes(voteVO);
     }
 
     @PostMapping("/delVote")
-    public List<VoteVO> DelVote(@RequestBody Map<String, String> req){
-        VoteVO voteVO=new VoteVO();
-        voteVO.setId(req.get("id"));
+    public List<VoteVO> DelVote(@RequestBody Map<String, String> req) {
+        VoteVO voteVO = new VoteVO();
+        voteVO.setV_name(req.get("id"));
         voteDAO.delVote(voteVO);
-        voteVO.setId(null);
+        voteVO.setV_name(" ");
         return voteDAO.getVotes(voteVO);
     }
 
     @PostMapping("/addVote")
-    public List<VoteVO> AddVote(@RequestBody Map<String, String> req){
-        VoteVO voteVO=new VoteVO();
-        voteVO.setId(req.get("id"));
+    public List<VoteVO> AddVote(@RequestBody Map<String, Object> req) {
+        VoteVO voteVO = new VoteVO();
+        voteVO.setV_name(req.get("id").toString());
         voteDAO.delVote(voteVO);
-        voteVO.setVote(Integer.parseInt(req.get("vote")));
+        voteVO.setNum((int) req.get("vote"));
         voteDAO.addVote(voteVO);
-        voteVO.setId(null);
         return voteDAO.getVotes(voteVO);
+    }
+
+    @PostMapping("/getScores")
+    public List<ScoreVO> GetScores() {
+        return scoreDAO.getScores();
+    }
+
+    @PostMapping("/addScore")
+    public List<ScoreVO> AddScore(@RequestBody Map<String, Integer> req) {
+        ScoreVO scoreVO = new ScoreVO();
+        scoreVO.setId(req.get("id"));
+        scoreVO.setScore(req.get("score"));
+        scoreDAO.addScore(scoreVO);
+        return scoreDAO.getScores();
     }
 }
