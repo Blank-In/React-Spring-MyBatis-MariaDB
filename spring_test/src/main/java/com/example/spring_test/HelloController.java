@@ -1,13 +1,13 @@
 package com.example.spring_test;
 
-import com.example.spring_test.DAO.PostDAO;
-import com.example.spring_test.DAO.ScoreDAO;
-import com.example.spring_test.DAO.UserDAO;
-import com.example.spring_test.DAO.VoteDAO;
-import com.example.spring_test.VO.PostVO;
-import com.example.spring_test.VO.ScoreVO;
-import com.example.spring_test.VO.UserVO;
-import com.example.spring_test.VO.VoteVO;
+import com.example.spring_test.myBatis.DAO.PostDAO;
+import com.example.spring_test.myBatis.DAO.ScoreDAO;
+import com.example.spring_test.myBatis.DAO.UserDAO;
+import com.example.spring_test.myBatis.DAO.VoteDAO;
+import com.example.spring_test.myBatis.VO.PostVO;
+import com.example.spring_test.myBatis.VO.ScoreVO;
+import com.example.spring_test.myBatis.VO.UserVO;
+import com.example.spring_test.myBatis.VO.VoteVO;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;

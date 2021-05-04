@@ -5,10 +5,10 @@
 
     <!-- Alias 설정 -->
     <typeAliases>
-        <typeAlias alias="user" type="com.example.spring_test.VO.UserVO"/>
-        <typeAlias alias="post" type="com.example.spring_test.VO.PostVO"/>
-        <typeAlias alias="vote" type="com.example.spring_test.VO.VoteVO"/>
-        <typeAlias alias="score" type="com.example.spring_test.VO.ScoreVO"/>
+        <typeAlias alias="user" type="com.example.spring_test.myBatis.VO.UserVO"/>
+        <typeAlias alias="post" type="com.example.spring_test.myBatis.VO.PostVO"/>
+        <typeAlias alias="vote" type="com.example.spring_test.myBatis.VO.VoteVO"/>
+        <typeAlias alias="score" type="com.example.spring_test.myBatis.VO.ScoreVO"/>
     </typeAliases>
 
     <!-- DataSource 설정 -->

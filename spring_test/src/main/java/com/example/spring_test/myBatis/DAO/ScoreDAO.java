@@ -1,6 +1,6 @@
-package com.example.spring_test.DAO;
+package com.example.spring_test.myBatis.DAO;
 
-import com.example.spring_test.VO.ScoreVO;
+import com.example.spring_test.myBatis.VO.ScoreVO;
 import com.example.spring_test.myBatis.SqlSessionFactoryBean;
 import org.apache.ibatis.session.SqlSession;
 

@@ -1,4 +1,4 @@
-package com.example.spring_test.VO;
+package com.example.spring_test.myBatis.VO;
 
 public class ScoreVO {
     private int id;
