@@ -8,12 +8,6 @@
         <result property="lore" column="LORE"/>
     </resultMap>
 
-    <select id="loginUser" resultType="user">
-        SELECT *
-        FROM test_user
-        WHERE id = #{id}
-          AND pw = #{pw}
-    </select>
     <insert id="registerUser">
         INSERT INTO test_user
         VALUES (#{id}, #{pw}, #{lore})

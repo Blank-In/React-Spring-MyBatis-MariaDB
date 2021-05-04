@@ -38,20 +38,6 @@ public class HelloController {
         return value;
     }
 
-    @PostMapping("/login")
-    public String Login(@RequestBody Map<String, String> req) {
-        UserVO userVO = new UserVO();
-        userVO.setId(req.get("id"));
-        userVO.setPw(req.get("pw"));
-        userVO = userDAO.loginUser(userVO);
-        if (userVO == null) {
-            return "{\"flg\":false, \"lore\":\"아이디 또는 비밀번호가 틀렸습니다.\"}";
-        }
-        else {
-            return "{\"flg\":true, \"lore\":\"" + userVO.getLore() + "\"}";
-        }
-    }
-
     @PostMapping("/register")
     public String Register(@RequestBody Map<String, String> req) {
         UserVO userVO = new UserVO();

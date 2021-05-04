@@ -36,7 +36,7 @@ class Login extends React.Component {
                 pw: pw
             })
         }
-        fetch('http://192.168.1.221:8080/api/login', request)
+        fetch('http://192.168.1.221:8080/memberTest/login', request)
             .then(res => res.json())
             .then(data => this.setState({
                 flg: data.flg,

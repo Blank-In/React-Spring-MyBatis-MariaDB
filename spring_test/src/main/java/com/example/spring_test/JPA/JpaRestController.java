@@ -1,5 +1,6 @@
 package com.example.spring_test.JPA;
 
+import com.example.spring_test.myBatis.VO.UserVO;
 import org.apache.coyote.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -27,21 +29,37 @@ public class JpaRestController {
         return new ResponseEntity<List<MemberVO>>(member, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{mbrNo}", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<MemberVO> getMember(@PathVariable("mbrNo") Long mbrNo) {
-        Optional<MemberVO> member = memberService.findById(mbrNo);
+    @PostMapping("/login")
+    public String Login(@RequestBody Map<String, String> req) {
+        Optional<MemberVO> member = memberService.findById(req.get("id"));
+        if (member.isPresent()) {
+            if(member.get().getPw().equals(req.get("pw"))){
+                return "{\"flg\":true, \"lore\":\"" + member.get().getLore() + "\"}";
+            }
+            else{
+                return "{\"flg\":false, \"lore\":\"비밀번호가 틀렸습니다.\"}";
+            }
+        }
+        else {
+            return "{\"flg\":false, \"lore\":\"존재하지 않는 계정입니다.\"}";
+        }
+    }
+
+    @GetMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<MemberVO> getMember(@PathVariable("id") String id) {
+        Optional<MemberVO> member = memberService.findById(id);
         return new ResponseEntity<MemberVO>(member.get(), HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/{mbrNo}", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Void> deleteMember(@PathVariable("mbrNo") Long mbrNo) {
-        memberService.deleteById(mbrNo);
+    @DeleteMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<Void> deleteMember(@PathVariable("id") String id) {
+        memberService.deleteById(id);
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping(value = "/{mbrNo}", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<MemberVO> updateMember(@PathVariable("mbrNo") Long mbrNo, MemberVO member) {
-        memberService.updateById(mbrNo, member);
+    @PutMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<MemberVO> updateMember(@PathVariable("id") String id, MemberVO member) {
+        memberService.updateById(id, member);
         return new ResponseEntity<MemberVO>(member, HttpStatus.OK);
     }
 
@@ -54,4 +72,5 @@ public class JpaRestController {
     public ResponseEntity<MemberVO> save(HttpServletRequest req, MemberVO member) {
         return new ResponseEntity<MemberVO>(memberService.save(member), HttpStatus.OK);
     }
+
 }

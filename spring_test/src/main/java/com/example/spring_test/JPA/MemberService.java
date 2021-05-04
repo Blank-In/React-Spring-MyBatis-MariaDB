@@ -9,6 +9,10 @@ import java.util.Optional;
 
 @Service
 public class MemberService {
+    //find select
+    //save insert-update
+    //delete delete
+
     @Autowired
     private MemberRepository memberRepository;
 
@@ -18,13 +22,13 @@ public class MemberService {
         return members;
     }
 
-    public Optional<MemberVO> findById(Long mbrNo) {
-        Optional<MemberVO> member = memberRepository.findById(mbrNo);
+    public Optional<MemberVO> findById(String id) {
+        Optional<MemberVO> member = memberRepository.findById(id);
         return member;
     }
 
-    public void deleteById(Long mbrNo) {
-        memberRepository.deleteById(mbrNo);
+    public void deleteById(String id) {
+        memberRepository.deleteById(id);
     }
 
     public MemberVO save(MemberVO member) {
@@ -32,13 +36,14 @@ public class MemberService {
         return member;
     }
 
-    public void updateById(Long mbrNo, MemberVO member) {
-        Optional<MemberVO> e = memberRepository.findById(mbrNo);
+    public void updateById(String id, MemberVO member) {
+        Optional<MemberVO> e = memberRepository.findById(id);
         if (e.isPresent()) {
-            e.get().setMbrNo(member.getMbrNo());
             e.get().setId(member.getId());
             e.get().setPw(member.getPw());
+            e.get().setLore(member.getLore());
             memberRepository.save(member);
         }
     }
+
 }

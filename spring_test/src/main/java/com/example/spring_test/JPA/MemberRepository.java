@@ -6,12 +6,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface MemberRepository extends JpaRepository<MemberVO, Long> {
-
-    public List<MemberVO> findById(String id);
-
-    public List<MemberVO> findByPw(String pw);
-
-    public List<MemberVO> findByIdLike(String keyword);
-
+public interface MemberRepository extends JpaRepository<MemberVO, String> {
 }

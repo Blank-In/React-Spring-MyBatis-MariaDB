@@ -10,15 +10,15 @@ import javax.persistence.Id;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name = "jpa_member")
+@Entity(name = "test_user")
 public class MemberVO {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long mbrNo;
-
+    //@GeneratedValue(strategy = GenerationType.IDENTITY) 유니크키 자동생성
     private String id;
 
     private String pw;
+
+    private String lore;
 
     @Builder
     public MemberVO(String id, String pw) {

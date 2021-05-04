@@ -11,10 +11,6 @@ public class UserDAO {
         mybatis = SqlSessionFactoryBean.getSqlSessionInstance();
     }
 
-    public UserVO loginUser(UserVO vo) {
-        return (mybatis.selectOne("UserDAO.loginUser", vo));
-    }
-
     public void registerUser(UserVO vo) {
         mybatis.insert("UserDAO.registerUser", vo);
         mybatis.commit();
