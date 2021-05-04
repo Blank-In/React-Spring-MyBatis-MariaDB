@@ -1,7 +1,5 @@
 package com.example.spring_test.JPA;
 
-import com.example.spring_test.myBatis.VO.UserVO;
-import org.apache.coyote.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +31,10 @@ public class JpaRestController {
     public String Login(@RequestBody Map<String, String> req) {
         Optional<MemberVO> member = memberService.findById(req.get("id"));
         if (member.isPresent()) {
-            if(member.get().getPw().equals(req.get("pw"))){
+            if (member.get().getPw().equals(req.get("pw"))) {
                 return "{\"flg\":true, \"lore\":\"" + member.get().getLore() + "\"}";
             }
-            else{
+            else {
                 return "{\"flg\":false, \"lore\":\"비밀번호가 틀렸습니다.\"}";
             }
         }
