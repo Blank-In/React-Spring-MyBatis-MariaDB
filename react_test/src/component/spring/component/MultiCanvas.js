@@ -52,19 +52,11 @@ class MultiCanvas extends React.Component {
     }
 
     initDraw = (event) => {
-
-        this.ctx.beginPath();
-        this.ctx.moveTo(event.offsetX, event.offsetY);
         this.f_x = event.offsetX;
         this.f_y = event.offsetY;
     }
     finishDraw = (event) => {
         const {r, g, b, a} = this.state;
-        const color = 'rgba(' + r + ',' + g + ',' + b + ',' + (a / 100) + ')'
-        this.ctx.strokeStyle = color;
-        this.ctx.lineTo(event.offsetX, event.offsetY);
-        this.ctx.stroke();
-        this.ctx.closePath();
         const request = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -73,7 +65,7 @@ class MultiCanvas extends React.Component {
                 f_y: this.f_y,
                 l_x: event.offsetX,
                 l_y: event.offsetY,
-                color: color
+                color: 'rgba(' + r + ',' + g + ',' + b + ',' + (a / 100) + ')'
             })
         }
         fetch('http://192.168.1.221:8080/api/addCanvas', request)
@@ -92,7 +84,7 @@ class MultiCanvas extends React.Component {
             this.ctx = this.canvas.getContext('2d');
             this.canvas.addEventListener("mousedown", this.initDraw);
             this.canvas.addEventListener("mouseup", this.finishDraw);
-            setInterval(this.tick, 5000);
+            setInterval(this.tick, 1000);
         }
     }
 
