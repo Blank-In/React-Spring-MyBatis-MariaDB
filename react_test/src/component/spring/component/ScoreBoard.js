@@ -1,5 +1,5 @@
 import React from "react";
-import Score from "../DataBase/scoreBoard/Score";
+import Score from "../../DataBase/scoreBoard/Score";
 
 class ScoreBoard extends React.Component {
     constructor(props) {

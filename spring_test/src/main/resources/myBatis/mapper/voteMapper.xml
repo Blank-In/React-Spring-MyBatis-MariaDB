@@ -13,7 +13,7 @@
         SELECT v_name
              , num
              , (SELECT COUNT(*) FROM user_vote WHERE vote = num)                            cnt
-             , IF(num = NULLIF((SELECT vote FROM user_vote WHERE id = #{v_name}), 0), 1, 0) flg
+             , IF(num = IFNULL((SELECT vote FROM user_vote WHERE id = #{v_name}), 0), 1, 0) flg
         FROM vote_data
     </select>
     <delete id="delVote">

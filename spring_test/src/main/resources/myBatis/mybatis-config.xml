@@ -10,6 +10,7 @@
         <typeAlias alias="vote" type="com.example.spring_test.myBatis.VO.VoteVO"/>
         <typeAlias alias="score" type="com.example.spring_test.myBatis.VO.ScoreVO"/>
         <typeAlias alias="board" type="com.example.spring_test.myBatis.VO.BoardVO"/>
+        <typeAlias alias="canvas" type="com.example.spring_test.myBatis.VO.CanvasVO"/>
     </typeAliases>
 
     <!-- DataSource 설정 -->
@@ -31,6 +32,7 @@
         <mapper resource="myBatis/mapper/voteMapper.xml"/>
         <mapper resource="myBatis/mapper/scoreMapper.xml"/>
         <mapper resource="myBatis/mapper/boardMapper.xml"/>
+        <mapper resource="myBatis/mapper/canvasMapper.xml"/>
     </mappers>
 
 </configuration>

@@ -15,7 +15,7 @@
     </select>
     <insert id="addPost">
         INSERT INTO posts (title, lore, id, p_id)
-        VALUES (#{title}, #{lore}, #{id}, (SELECT nullif(max(p2.p_id), 0) + 1 FROM posts p2))
+        VALUES (#{title}, #{lore}, #{id}, (SELECT IFNULL(max(p2.p_id), 0) + 1 FROM posts p2))
     </insert>
     <delete id="delPost">
         DELETE

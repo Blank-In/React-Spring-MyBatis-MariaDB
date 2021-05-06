@@ -1,11 +1,12 @@
 import React from "react";
 import SpringCon from "./SpringCon";
-import Login from "./account/Login";
-import Register from "./account/Register";
-import PostBoardDB from "./PostBoardDB";
-import VoteStatus from "./VoteStatus";
-import ScoreBoard from "./ScoreBoard";
-import Board from "./Board";
+import Login from "./component/account/Login";
+import Register from "./component/account/Register";
+import PostBoardDB from "./component/PostBoardDB";
+import VoteStatus from "./component/VoteStatus";
+import ScoreBoard from "./component/ScoreBoard";
+import Board from "./component/Board";
+import MultiCanvas from "./component/MultiCanvas";
 
 class SpringComponent extends React.Component {
     render() {
@@ -18,6 +19,7 @@ class SpringComponent extends React.Component {
                 <VoteStatus/>
                 <ScoreBoard/>
                 <Board/>
+                <MultiCanvas/>
             </div>
         );
     }

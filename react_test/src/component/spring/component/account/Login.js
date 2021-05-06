@@ -1,5 +1,5 @@
 import React from "react";
-import {setID} from "../../../redux/actions";
+import {setID} from "../../../../redux/actions";
 import {connect} from "react-redux";
 
 class Login extends React.Component {

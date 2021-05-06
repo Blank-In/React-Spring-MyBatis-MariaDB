@@ -8,7 +8,7 @@ vote_data
 */
 import React from "react";
 import {connect} from "react-redux";
-import Vote from "../DataBase/vote/Vote";
+import Vote from "../../DataBase/vote/Vote";
 
 class VoteStatus extends React.Component {
     constructor(props) {

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import customAxios from "./customAxios";
+import customAxios from "./component/customAxios";
 
 function SpringCon() {
     const [ip, setIp] = useState('Spring 서버와 연결 중 오류 발생');

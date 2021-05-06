@@ -1,5 +1,5 @@
 import React from "react";
-import PostDB from "../DataBase/posts/PostDB";
+import PostDB from "../../DataBase/posts/PostDB";
 import {connect} from "react-redux";
 
 class PostBoardDB extends React.Component {

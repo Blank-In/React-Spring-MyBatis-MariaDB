@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CanvasDAO">
+
+    <resultMap id="canvasResult" type="canvas">
+        <id property="id" column="ID"/>
+        <result property="f_x" column="F_X"/>
+        <result property="f_y" column="F_Y"/>
+        <result property="l_x" column="L_X"/>
+        <result property="l_y" column="L_Y"/>
+        <result property="color" column="COLOR"/>
+    </resultMap>
+
+    <select id="getCanvases" resultType="canvas">
+        SELECT *
+        FROM canvas
+        WHERE id > #{id}
+        ORDER BY id
+    </select>
+    <insert id="addCanvas">
+        INSERT INTO canvas(id, f_x, f_y, l_x, l_y, color)
+        VALUES ((SELECT IFNULL(MAX(c2.id), 0) FROM canvas c2) + 1, #{f_x}, #{f_y}, #{l_x}, #{l_y}, #{color})
+    </insert>
+
+</mapper>

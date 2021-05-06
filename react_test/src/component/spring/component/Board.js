@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import Slot from "../DataBase/boardGame/Slot";
+import Slot from "../../DataBase/boardGame/Slot";
 
 class Board extends React.Component {
     status = 0;

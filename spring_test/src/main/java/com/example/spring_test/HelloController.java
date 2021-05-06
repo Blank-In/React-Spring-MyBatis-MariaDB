@@ -22,6 +22,7 @@ public class HelloController {
     VoteDAO voteDAO = new VoteDAO();
     ScoreDAO scoreDAO = new ScoreDAO();
     BoardDAO boardDAO = new BoardDAO();
+    CanvasDAO canvasDAO = new CanvasDAO();
 
     @PostMapping("/test")
     public String test(HttpServletRequest request) {
@@ -159,5 +160,19 @@ public class HelloController {
     public void ResetBoard(@RequestBody Map<String, String> req) {
         BoardVO boardVO = new BoardVO(req.get("id"), req.get("board"), 2);
         boardDAO.resetBoard(boardVO);
+    }
+
+    @PostMapping("/getCanvases")
+    public List<CanvasVO> GetCanvases(@RequestBody Map<String, Integer> req) {
+        CanvasVO canvasVO = new CanvasVO();
+        canvasVO.setId(req.get("id"));
+        return canvasDAO.getCanvases(canvasVO);
+    }
+
+    @PostMapping("/addCanvas")
+    public void AddCanvas(@RequestBody Map<String, Object> req) {
+        CanvasVO canvasVO = new CanvasVO((int) req.get("f_x"), (int) req.get("f_y"),
+                (int) req.get("l_x"), (int) req.get("l_y"), req.get("color").toString());
+        canvasDAO.addCanvas(canvasVO);
     }
 }
