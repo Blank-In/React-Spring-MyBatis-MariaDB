@@ -213,7 +213,7 @@ router.get('/boardMatching', function (req, res) {
             console.log(sql);
             connection.query(sql);
             res.send(`{"matching":"false"}`);
-        } else { //대가지가 있음 게임을 시작하면 됨
+        } else { //대기자가 있음 게임을 시작하면 됨
             sql = `update boards
                    set game='${req.query.id}',
                        turn=0

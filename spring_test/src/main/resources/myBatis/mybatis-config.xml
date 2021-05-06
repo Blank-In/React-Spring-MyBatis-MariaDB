@@ -9,6 +9,7 @@
         <typeAlias alias="post" type="com.example.spring_test.myBatis.VO.PostVO"/>
         <typeAlias alias="vote" type="com.example.spring_test.myBatis.VO.VoteVO"/>
         <typeAlias alias="score" type="com.example.spring_test.myBatis.VO.ScoreVO"/>
+        <typeAlias alias="board" type="com.example.spring_test.myBatis.VO.BoardVO"/>
     </typeAliases>
 
     <!-- DataSource 설정 -->
@@ -29,6 +30,7 @@
         <mapper resource="myBatis/mapper/postMapper.xml"/>
         <mapper resource="myBatis/mapper/voteMapper.xml"/>
         <mapper resource="myBatis/mapper/scoreMapper.xml"/>
+        <mapper resource="myBatis/mapper/boardMapper.xml"/>
     </mappers>
 
 </configuration>

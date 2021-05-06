@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardDAO">
+
+    <resultMap id="boardResult" type="board">
+        <id property="b_id" column="B_ID"/>
+        <result property="game" column="GAME"/>
+        <result property="turn" column="TURN"/>
+    </resultMap>
+
+    <select id="getBoard" resultType="board">
+        SELECT *
+        FROM boards
+        WHERE b_id = #{b_id}
+    </select>
+    <update id="setBoard">
+        UPDATE boards
+        SET game=#{game},
+            turn=#{turn}
+        WHERE b_id = #{b_id}
+    </update>
+    <delete id="delBoard">
+        DELETE
+        FROM boards
+        WHERE b_id = #{b_id}
+    </delete>
+    <insert id="addBoard">
+        INSERT INTO boards(b_id, game, turn)
+        VALUES (#{b_id}, #{game}, #{turn})
+    </insert>
+
+</mapper>

@@ -1,13 +1,7 @@
 package com.example.spring_test;
 
-import com.example.spring_test.myBatis.DAO.PostDAO;
-import com.example.spring_test.myBatis.DAO.ScoreDAO;
-import com.example.spring_test.myBatis.DAO.UserDAO;
-import com.example.spring_test.myBatis.DAO.VoteDAO;
-import com.example.spring_test.myBatis.VO.PostVO;
-import com.example.spring_test.myBatis.VO.ScoreVO;
-import com.example.spring_test.myBatis.VO.UserVO;
-import com.example.spring_test.myBatis.VO.VoteVO;
+import com.example.spring_test.myBatis.DAO.*;
+import com.example.spring_test.myBatis.VO.*;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -27,6 +21,7 @@ public class HelloController {
     PostDAO postDAO = new PostDAO();
     VoteDAO voteDAO = new VoteDAO();
     ScoreDAO scoreDAO = new ScoreDAO();
+    BoardDAO boardDAO = new BoardDAO();
 
     @PostMapping("/test")
     public String test(HttpServletRequest request) {
@@ -113,5 +108,56 @@ public class HelloController {
         scoreVO.setScore(req.get("score"));
         scoreDAO.addScore(scoreVO);
         return scoreDAO.getScores();
+    }
+
+    @PostMapping("/boardMatching")
+    public String BoardMatching(@RequestBody Map<String, String> req) {
+        BoardVO boardVO = new BoardVO();
+        boardVO.setB_id("matching");
+        boardVO = boardDAO.getBoard(boardVO);
+        String enemy = boardVO.getGame();
+        boardVO.setGame(req.get("id"));
+        if (boardVO.getTurn() == 0) {
+            boardVO.setTurn(1);
+            boardDAO.setBoard(boardVO);
+            return "{\"matching\":\"false\"}";
+        }
+        else {
+            boardVO.setTurn(0);
+            boardDAO.setBoard(boardVO);
+            return "{\"matching\":\"" + enemy + "\",\"turn\":2}";
+        }
+    }
+
+    @PostMapping("/findMatching")
+    public String FindMatching() {
+        BoardVO boardVO = new BoardVO();
+        boardVO.setB_id("matching");
+        boardVO = boardDAO.getBoard(boardVO);
+        if (boardVO.getTurn() == 0) {
+            return "{\"matching\":\"" + boardVO.getGame() + "\",\"turn\":1}";
+        }
+        else {
+            return "{\"matching\":\"false\"}";
+        }
+    }
+
+    @PostMapping("/getBoard")
+    public BoardVO GetBoard(@RequestBody Map<String, String> req) {
+        BoardVO boardVO = new BoardVO();
+        boardVO.setB_id(req.get("id"));
+        return boardDAO.getBoard(boardVO);
+    }
+
+    @PostMapping("/setBoard")
+    public void SetBoard(@RequestBody Map<String, String> req) {
+        BoardVO boardVO = new BoardVO(req.get("id"), req.get("board"), Integer.parseInt(req.get("turn")));
+        boardDAO.setBoard(boardVO);
+    }
+
+    @PostMapping("/resetBoard")
+    public void ResetBoard(@RequestBody Map<String, String> req) {
+        BoardVO boardVO = new BoardVO(req.get("id"), req.get("board"), 2);
+        boardDAO.resetBoard(boardVO);
     }
 }
