@@ -178,7 +178,7 @@ router.get('/getBoard', function (req, res) {
     });
 });
 
-router.get('/setBoard', function (req, res) {
+router.get('/setBoard', function (req) {
     let sql = `update boards
                set game=${req.query.board},
                    turn=${req.query.turn}
@@ -187,7 +187,7 @@ router.get('/setBoard', function (req, res) {
     connection.query(sql);
 });
 
-router.get('/resetBoard', function (req, res) {
+router.get('/resetBoard', function (req) {
     let sql = `delete
                from boards
                where b_id = ${req.query.id}`;
@@ -257,7 +257,7 @@ router.get('/getCanvas', function (req, res) {
 router.get('/addCanvas', function (req, res) {
     const sql = `INSERT INTO canvas VALUE((SELECT ifnull(MAX(c2.id),0) FROM canvas c2)+1,${req.query.f_x},${req.query.f_y},${req.query.l_x},${req.query.l_y},${req.query.color})`
     console.log(sql);
-    connection.query(sql, function (err, rows) {
+    connection.query(sql, function (err) {
         if (err) {
             res.send(err);
         }

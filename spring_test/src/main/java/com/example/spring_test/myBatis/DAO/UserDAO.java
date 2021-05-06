@@ -5,7 +5,7 @@ import com.example.spring_test.myBatis.SqlSessionFactoryBean;
 import org.apache.ibatis.session.SqlSession;
 
 public class UserDAO {
-    private SqlSession mybatis;
+    private final SqlSession mybatis;
 
     public UserDAO() {
         mybatis = SqlSessionFactoryBean.getSqlSessionInstance();

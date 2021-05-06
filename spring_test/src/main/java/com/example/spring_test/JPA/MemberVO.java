@@ -17,10 +17,4 @@ public class MemberVO {
     private String pw;
 
     private String lore;
-
-    @Builder
-    public MemberVO(String id, String pw) {
-        this.id = id;
-        this.pw = pw;
-    }
 }

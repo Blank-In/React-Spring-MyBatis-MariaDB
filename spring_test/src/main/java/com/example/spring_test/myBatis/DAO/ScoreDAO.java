@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import java.util.List;
 
 public class ScoreDAO {
-    private SqlSession mybatis;
+    private final SqlSession mybatis;
 
     public ScoreDAO() {
         mybatis = SqlSessionFactoryBean.getSqlSessionInstance();

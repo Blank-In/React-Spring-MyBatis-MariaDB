@@ -17,14 +17,11 @@ public class MemberService {
     private MemberRepository memberRepository;
 
     public List<MemberVO> findAll() {
-        List<MemberVO> members = new ArrayList<>();
-        memberRepository.findAll().forEach(e -> members.add(e));
-        return members;
+        return new ArrayList<>(memberRepository.findAll());
     }
 
     public Optional<MemberVO> findById(String id) {
-        Optional<MemberVO> member = memberRepository.findById(id);
-        return member;
+        return memberRepository.findById(id);
     }
 
     public void deleteById(String id) {

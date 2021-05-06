@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import java.util.List;
 
 public class PostDAO {
-    private SqlSession mybatis;
+    private final SqlSession mybatis;
 
     public PostDAO() {
         mybatis = SqlSessionFactoryBean.getSqlSessionInstance();

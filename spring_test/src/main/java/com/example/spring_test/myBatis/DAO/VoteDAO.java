@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VoteDAO {
-    private SqlSession mybatis;
+    private final SqlSession mybatis;
 
     public VoteDAO() {
         mybatis = SqlSessionFactoryBean.getSqlSessionInstance();
@@ -19,7 +19,7 @@ public class VoteDAO {
             return mybatis.selectList("VoteDAO.getVotes", vo);
         } catch (Exception e) {
             e.printStackTrace();
-            return new ArrayList<VoteVO>();
+            return new ArrayList<>();
         }
     }
 
