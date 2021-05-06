@@ -8,28 +8,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VoteDAO {
-    private final SqlSession mybatis;
-
-    public VoteDAO() {
-        mybatis = SqlSessionFactoryBean.getSqlSessionInstance();
-    }
-
     public List<VoteVO> getVotes(VoteVO vo) {
-        try {
-            return mybatis.selectList("VoteDAO.getVotes", vo);
+        List<VoteVO> list = new ArrayList<>();
+        try (SqlSession mybatis = SqlSessionFactoryBean.getSqlSessionInstance()) {
+            list = mybatis.selectList("VoteDAO.getVotes", vo);
         } catch (Exception e) {
             e.printStackTrace();
-            return new ArrayList<>();
         }
+        return list;
     }
 
     public void delVote(VoteVO vo) {
-        mybatis.delete("VoteDAO.delVote", vo);
-        mybatis.commit();
+        try (SqlSession mybatis = SqlSessionFactoryBean.getSqlSessionInstance()) {
+            mybatis.delete("VoteDAO.delVote", vo);
+            mybatis.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void addVote(VoteVO vo) {
-        mybatis.insert("VoteDAO.addVote", vo);
-        mybatis.commit();
+        try (SqlSession mybatis = SqlSessionFactoryBean.getSqlSessionInstance()) {
+            mybatis.insert("VoteDAO.addVote", vo);
+            mybatis.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

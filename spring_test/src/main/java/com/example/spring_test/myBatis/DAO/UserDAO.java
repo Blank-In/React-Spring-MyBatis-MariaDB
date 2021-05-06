@@ -5,14 +5,12 @@ import com.example.spring_test.myBatis.SqlSessionFactoryBean;
 import org.apache.ibatis.session.SqlSession;
 
 public class UserDAO {
-    private final SqlSession mybatis;
-
-    public UserDAO() {
-        mybatis = SqlSessionFactoryBean.getSqlSessionInstance();
-    }
-
     public void registerUser(UserVO vo) {
-        mybatis.insert("UserDAO.registerUser", vo);
-        mybatis.commit();
+        try (SqlSession mybatis = SqlSessionFactoryBean.getSqlSessionInstance()) {
+            mybatis.insert("UserDAO.registerUser", vo);
+            mybatis.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

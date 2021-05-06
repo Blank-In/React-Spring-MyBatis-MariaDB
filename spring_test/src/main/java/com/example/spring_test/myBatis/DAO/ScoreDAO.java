@@ -4,23 +4,28 @@ import com.example.spring_test.myBatis.VO.ScoreVO;
 import com.example.spring_test.myBatis.SqlSessionFactoryBean;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ScoreDAO {
-    private final SqlSession mybatis;
-
-    public ScoreDAO() {
-        mybatis = SqlSessionFactoryBean.getSqlSessionInstance();
-    }
-
     public List<ScoreVO> getScores() {
-        return mybatis.selectList("ScoreDAO.getScores");
+        List<ScoreVO> list = new ArrayList<>();
+        try (SqlSession mybatis = SqlSessionFactoryBean.getSqlSessionInstance()) {
+            list = mybatis.selectList("ScoreDAO.getScores");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     public void addScore(ScoreVO vo) {
-        ScoreVO origin = mybatis.selectOne("ScoreDAO.getScore", vo);
-        origin.setScore((origin.getScore() * origin.getCnt() + vo.getScore()) / origin.plusCnt());
-        mybatis.update("addScore", origin);
-        mybatis.commit();
+        try (SqlSession mybatis = SqlSessionFactoryBean.getSqlSessionInstance()) {
+            ScoreVO origin = mybatis.selectOne("ScoreDAO.getScore", vo);
+            origin.setScore((origin.getScore() * origin.getCnt() + vo.getScore()) / origin.plusCnt());
+            mybatis.update("ScoreDAO.addScore", origin);
+            mybatis.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

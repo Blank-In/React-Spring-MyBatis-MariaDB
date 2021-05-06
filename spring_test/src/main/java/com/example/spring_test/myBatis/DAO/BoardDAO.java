@@ -7,25 +7,32 @@ import org.apache.ibatis.session.SqlSession;
 import javax.transaction.Transactional;
 
 public class BoardDAO {
-    private final SqlSession mybatis;
-
-    public BoardDAO() {
-        mybatis = SqlSessionFactoryBean.getSqlSessionInstance();
-    }
-
     public BoardVO getBoard(BoardVO vo) {
-        return mybatis.selectOne("BoardDAO.getBoard", vo);
+        try (SqlSession mybatis = SqlSessionFactoryBean.getSqlSessionInstance()) {
+            vo = mybatis.selectOne("BoardDAO.getBoard", vo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return vo;
     }
 
     public void setBoard(BoardVO vo) {
-        mybatis.update("BoardDAO.setBoard", vo);
-        mybatis.commit();
+        try (SqlSession mybatis = SqlSessionFactoryBean.getSqlSessionInstance()) {
+            mybatis.update("BoardDAO.setBoard", vo);
+            mybatis.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Transactional
     public void resetBoard(BoardVO vo) {
-        mybatis.delete("BoardDAO.delBoard", vo);
-        mybatis.insert("BoardDAO.addBoard", vo);
-        mybatis.commit();
+        try (SqlSession mybatis = SqlSessionFactoryBean.getSqlSessionInstance()) {
+            mybatis.delete("BoardDAO.delBoard", vo);
+            mybatis.insert("BoardDAO.addBoard", vo);
+            mybatis.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
