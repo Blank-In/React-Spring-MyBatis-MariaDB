@@ -11,7 +11,7 @@ public class ScoreDAO {
     public List<ScoreVO> getScores() {
         List<ScoreVO> list = new ArrayList<>();
         try (SqlSession mybatis = SqlSessionFactoryBean.getSqlSessionInstance()) {
-            list = mybatis.selectList("ScoreDAO.getScores");
+            list = mybatis.selectList("ScoreDAO.getScore");
         } catch (Exception e) {
             e.printStackTrace();
         }
