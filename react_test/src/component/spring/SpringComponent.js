@@ -7,6 +7,7 @@ import VoteStatus from "./component/VoteStatus";
 import ScoreBoard from "./component/ScoreBoard";
 import Board from "./component/Board";
 import MultiCanvas from "./component/MultiCanvas";
+import PopNotice from "./component/PopNotice";
 
 class SpringComponent extends React.Component {
     render() {
@@ -20,6 +21,7 @@ class SpringComponent extends React.Component {
                 <ScoreBoard/>
                 <Board/>
                 <MultiCanvas/>
+                <PopNotice/>
             </div>
         );
     }

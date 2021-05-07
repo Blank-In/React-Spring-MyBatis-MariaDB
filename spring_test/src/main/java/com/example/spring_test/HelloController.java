@@ -23,6 +23,7 @@ public class HelloController {
     ScoreDAO scoreDAO = new ScoreDAO();
     BoardDAO boardDAO = new BoardDAO();
     CanvasDAO canvasDAO = new CanvasDAO();
+    NoticeDAO noticeDAO = new NoticeDAO();
 
     @PostMapping("/test")
     public String test(HttpServletRequest request) {
@@ -174,5 +175,10 @@ public class HelloController {
         CanvasVO canvasVO = new CanvasVO((int) req.get("f_x"), (int) req.get("f_y"),
                 (int) req.get("l_x"), (int) req.get("l_y"), req.get("color").toString());
         canvasDAO.addCanvas(canvasVO);
+    }
+
+    @PostMapping("/getNotices")
+    public List<NoticeVO> GetNotices(){
+        return noticeDAO.getNotices();
     }
 }

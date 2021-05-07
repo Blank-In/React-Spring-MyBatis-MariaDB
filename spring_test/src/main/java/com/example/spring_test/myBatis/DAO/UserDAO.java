@@ -6,11 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 
 public class UserDAO {
     public void registerUser(UserVO vo) {
-        try (SqlSession mybatis = SqlSessionFactoryBean.getSqlSessionInstance()) {
-            mybatis.insert("UserDAO.registerUser", vo);
-            mybatis.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        SqlSession mybatis = SqlSessionFactoryBean.getSqlSessionInstance();
+        mybatis.insert("UserDAO.registerUser", vo);
+        mybatis.commit();
+        mybatis.close();
     }
 }
