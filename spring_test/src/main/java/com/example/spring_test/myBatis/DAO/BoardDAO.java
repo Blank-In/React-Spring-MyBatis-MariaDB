@@ -4,8 +4,6 @@ import com.example.spring_test.myBatis.SqlSessionFactoryBean;
 import com.example.spring_test.myBatis.VO.BoardVO;
 import org.apache.ibatis.session.SqlSession;
 
-import javax.transaction.Transactional;
-
 public class BoardDAO {
     public BoardVO getBoard(BoardVO vo) {
         try (SqlSession mybatis = SqlSessionFactoryBean.getSqlSessionInstance()) {
@@ -25,14 +23,17 @@ public class BoardDAO {
         }
     }
 
-    @Transactional
     public void resetBoard(BoardVO vo) {
-        try (SqlSession mybatis = SqlSessionFactoryBean.getSqlSessionInstance()) {
+        SqlSession mybatis = SqlSessionFactoryBean.getSqlSessionInstance();
+        try {
             mybatis.delete("BoardDAO.delBoard", vo);
             mybatis.insert("BoardDAO.addBoard", vo);
             mybatis.commit();
         } catch (Exception e) {
+            mybatis.rollback();
             e.printStackTrace();
+        } finally {
+            mybatis.close();
         }
     }
 }
